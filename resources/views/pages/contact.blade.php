@@ -1,29 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contact Us</title>
-</head>
-<body>
-    <h1>Please contact us </h1>
-    <ul>
-        @for ($i = 0; $i < 10; $i++)
-            <li>this is number: {{ $i }}</li>
-        @endfor
-    </ul>
-    <ul>
-        @forelse ($foodItems as $item)
-            <li>{{ $loop->iteration }} {{ $item }}</li>
-        @empty
-            no items
-        @endforelse
-    </ul>
-    <form action="">
-        <input type="text" placeholder="name">
-        <hr>
-    </form>
-    <table><tr><td>test</td></tr></table>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('title', '- Contact Me')
+
+@section('content')
+    <fieldset>
+        <legend><h2>Contact me</h2></legend>
+        <form action="/message" method="POST">
+            @csrf
+            <input type="text" name="email"> <br>
+            <textarea name="message" cols="30" rows="10"></textarea> <br>
+            <input type="submit" value="Send">
+        </form>
+    </fieldset>
+@endsection

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $skills = ['swimming', 'shooting', 'horse riding'];
+    $picture = '/images/profile.png';
+
+    return view('welcome', ['skills' => $skills, 'image' => $picture]);
 });
 
+
 Route::get('/contact', function () {
-    $foodItems = [
-        'fruit' => 'apple',
-        'orange',
-        'something',
-    ];
-    return view('pages.contact', ['foodItems' => $foodItems]);
+    return view('pages.contact');
+});
+
+Route::post('/message', function (Request $request) {
+    $request->validate([
+        'email' => 'required|email',
+        'message'   => 'required|min:10',
+    ]);
+
+    return redirect('/');
 });
