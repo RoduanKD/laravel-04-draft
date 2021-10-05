@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,10 @@ Route::get('/', function () {
     $skills = ['swimming', 'shooting', 'horse riding'];
     $picture = '/images/profile.png';
 
-    return view('welcome', ['skills' => $skills, 'image' => $picture]);
+    $posts = Post::all();
+    // dd($posts);
+
+    return view('welcome', ['skills' => $skills, 'image' => $picture, 'posts' => $posts]);
 });
 
 
