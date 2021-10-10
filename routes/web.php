@@ -38,3 +38,56 @@ Route::post('/message', function (Request $request) {
 
     return redirect('/');
 });
+
+Route::get('/posts', function () {
+    return view('posts.index', ['posts' => Post::all()]);
+});
+
+Route::get('/posts/{id}', function ($id) {
+    return view('posts.show', ['post' => Post::find($id)]);
+});
+
+Route::view('/posts/create', 'posts.create');
+
+Route::post('/posts', function (Request $request) {
+    $request->validate([
+        'title'     => 'required|min:3',
+        'content'   => 'required',
+    ]);
+
+    $post = new Post();
+    $post->title = $request->title;
+    $post->content = $request->content;
+    $post->save();
+
+    return redirect('/');
+});
+
+
+Route::get('/posts/{id}/edit', function ($id) {
+    $post = Post::find($id);
+
+    return view('posts.edit', ['post' => $post]);
+});
+
+
+Route::put('/posts/{id}', function (Request $request, $id) {
+    $request->validate([
+        'title'     => 'required|min:3',
+        'content'   => 'required',
+    ]);
+
+    $post = Post::find($id);
+    $post->title = $request->title;
+    $post->content = $request->content;
+    $post->save();
+
+    return redirect('/');
+});
+
+Route::delete('/posts/{id}', function ($id) {
+    $post = Post::find($id);
+    $post->delete();
+
+    return redirect('/posts');
+});
