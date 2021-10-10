@@ -44,7 +44,10 @@ Route::get('/posts', function () {
 });
 
 Route::get('/posts/{id}', function ($id) {
-    return view('posts.show', ['post' => Post::find($id)]);
+    // if ($post = Post::find($id))
+    $post = Post::findOrFail($id);
+    return view('posts.show', ['post' => $post]);
+    // abort(404);
 });
 
 Route::view('/posts/create', 'posts.create');
@@ -65,7 +68,7 @@ Route::post('/posts', function (Request $request) {
 
 
 Route::get('/posts/{id}/edit', function ($id) {
-    $post = Post::find($id);
+    $post = Post::findOrFail($id);
 
     return view('posts.edit', ['post' => $post]);
 });
@@ -77,7 +80,7 @@ Route::put('/posts/{id}', function (Request $request, $id) {
         'content'   => 'required',
     ]);
 
-    $post = Post::find($id);
+    $post = Post::findOrFail($id);
     $post->title = $request->title;
     $post->content = $request->content;
     $post->save();
@@ -86,7 +89,7 @@ Route::put('/posts/{id}', function (Request $request, $id) {
 });
 
 Route::delete('/posts/{id}', function ($id) {
-    $post = Post::find($id);
+    $post = Post::findOrFail($id);
     $post->delete();
 
     return redirect('/posts');
