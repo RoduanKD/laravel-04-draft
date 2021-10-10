@@ -43,11 +43,8 @@ Route::get('/posts', function () {
     return view('posts.index', ['posts' => Post::all()]);
 });
 
-Route::get('/posts/{id}', function ($id) {
-    // if ($post = Post::find($id))
-    $post = Post::findOrFail($id);
+Route::get('/posts/{post}', function (Post $post) {
     return view('posts.show', ['post' => $post]);
-    // abort(404);
 });
 
 Route::view('/posts/create', 'posts.create');
@@ -67,20 +64,17 @@ Route::post('/posts', function (Request $request) {
 });
 
 
-Route::get('/posts/{id}/edit', function ($id) {
-    $post = Post::findOrFail($id);
-
+Route::get('/posts/{post}/edit', function (Post $post) {
     return view('posts.edit', ['post' => $post]);
 });
 
 
-Route::put('/posts/{id}', function (Request $request, $id) {
+Route::put('/posts/{post}', function (Request $request, Post $post) {
     $request->validate([
         'title'     => 'required|min:3',
         'content'   => 'required',
     ]);
 
-    $post = Post::findOrFail($id);
     $post->title = $request->title;
     $post->content = $request->content;
     $post->save();
@@ -88,8 +82,7 @@ Route::put('/posts/{id}', function (Request $request, $id) {
     return redirect('/');
 });
 
-Route::delete('/posts/{id}', function ($id) {
-    $post = Post::findOrFail($id);
+Route::delete('/posts/{post}', function (Post $post) {
     $post->delete();
 
     return redirect('/posts');
