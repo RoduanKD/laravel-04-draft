@@ -4,7 +4,7 @@
 
 @section('content')
     <h2>Create New post</h2>
-    <form action="/posts" method="POST">
+    <form action="{{ route('posts.store') }}" method="POST">
         @csrf
         <label>
             Title

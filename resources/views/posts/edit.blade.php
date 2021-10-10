@@ -4,7 +4,7 @@
 
 @section('content')
     <h2>Create New post</h2>
-    <form action="/posts/{{ $post->id }}" method="POST">
+    <form action="{{ route('posts.update', $post) }}}}" method="POST">
         @method('PUT')
         @csrf
         <label>

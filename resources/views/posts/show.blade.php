@@ -4,9 +4,9 @@
 
 @section('content')
     <h3>{{ $post->title }}</h3>
-    <h6><a href="/posts/{{ $post->id }}/edit">edit</a></h6>
+    <h6><a href="{{ route('posts.edit', $post) }}">edit</a></h6>
     <h6>
-        <form action="/posts/{{ $post->id }}" method="POST">
+        <form action="{{ route('posts.destory', $post) }}" method="POST">
             @csrf
             @method('DELETE')
             <input type="submit" value="delete">

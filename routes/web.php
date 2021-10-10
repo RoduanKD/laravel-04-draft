@@ -23,7 +23,7 @@ Route::get('/', function () {
     // dd($posts);
 
     return view('welcome', ['skills' => $skills, 'image' => $picture, 'posts' => $posts]);
-});
+})->name('welcome');
 
 
 Route::get('/contact', function () {
@@ -36,18 +36,18 @@ Route::post('/message', function (Request $request) {
         'message'   => 'required|min:10',
     ]);
 
-    return redirect('/');
+    return redirect()->route('welcome');
 });
 
 Route::get('/posts', function () {
     return view('posts.index', ['posts' => Post::all()]);
-});
+})->name('posts.index');
 
 Route::get('/posts/{post}', function (Post $post) {
     return view('posts.show', ['post' => $post]);
-});
+})->name('posts.show');
 
-Route::view('/posts/create', 'posts.create');
+Route::view('/posts/create', 'posts.create')->name('posts.create');
 
 Route::post('/posts', function (Request $request) {
     $request->validate([
@@ -60,13 +60,13 @@ Route::post('/posts', function (Request $request) {
     $post->content = $request->content;
     $post->save();
 
-    return redirect('/');
-});
+    return redirect()->route('welcome');
+})->name('posts.store');
 
 
 Route::get('/posts/{post}/edit', function (Post $post) {
     return view('posts.edit', ['post' => $post]);
-});
+})->name('posts.edit');
 
 
 Route::put('/posts/{post}', function (Request $request, Post $post) {
@@ -79,11 +79,11 @@ Route::put('/posts/{post}', function (Request $request, Post $post) {
     $post->content = $request->content;
     $post->save();
 
-    return redirect('/');
-});
+    return redirect()->route('welcome');
+})->name('posts.update');
 
 Route::delete('/posts/{post}', function (Post $post) {
     $post->delete();
 
-    return redirect('/posts');
-});
+    return redirect()->route('posts.index');
+})->name('posts.destory');
