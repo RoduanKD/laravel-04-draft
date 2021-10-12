@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,51 +40,10 @@ Route::post('/message', function (Request $request) {
     return redirect()->route('welcome');
 });
 
-Route::get('/posts', function () {
-    return view('posts.index', ['posts' => Post::all()]);
-})->name('posts.index');
-
-Route::get('/posts/{post}', function (Post $post) {
-    return view('posts.show', ['post' => $post]);
-})->name('posts.show');
-
-Route::view('/posts/create', 'posts.create')->name('posts.create');
-
-Route::post('/posts', function (Request $request) {
-    $request->validate([
-        'title'     => 'required|min:3',
-        'content'   => 'required',
-    ]);
-
-    $post = new Post();
-    $post->title = $request->title;
-    $post->content = $request->content;
-    $post->save();
-
-    return redirect()->route('welcome');
-})->name('posts.store');
-
-
-Route::get('/posts/{post}/edit', function (Post $post) {
-    return view('posts.edit', ['post' => $post]);
-})->name('posts.edit');
-
-
-Route::put('/posts/{post}', function (Request $request, Post $post) {
-    $request->validate([
-        'title'     => 'required|min:3',
-        'content'   => 'required',
-    ]);
-
-    $post->title = $request->title;
-    $post->content = $request->content;
-    $post->save();
-
-    return redirect()->route('welcome');
-})->name('posts.update');
-
-Route::delete('/posts/{post}', function (Post $post) {
-    $post->delete();
-
-    return redirect()->route('posts.index');
-})->name('posts.destory');
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destory');
