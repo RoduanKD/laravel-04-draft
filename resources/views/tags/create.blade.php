@@ -1,0 +1,14 @@
+@extends('layouts.app')
+
+@section('title', '- Create new Category')
+
+@section('content')
+    <h2>Create New tag</h2>
+    <form action="{{ route('tags.store') }}" method="POST">
+        @csrf
+        <label>
+            Name
+            <input type="text" name="name">
+        </label>
+    </form>
+@endsection
