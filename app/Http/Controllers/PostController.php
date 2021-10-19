@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +16,9 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('posts.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     public function show(Post $post)
@@ -27,14 +31,20 @@ class PostController extends Controller
         $request->validate([
             'title'     => 'required|min:3',
             'content'   => 'required',
+            'category_id'   => 'required|numeric|exists:categories,id',
+            'tags'          => 'required|array|min:1|max:5',
+            'tags.*'        => 'required|numeric|exists:tags,id',
         ]);
 
         $post = new Post();
         $post->title = $request->title;
         $post->content = $request->content;
+        $post->category_id = $request->category_id;
         $post->save();
 
-        return redirect()->route('welcome');
+        $post->tags()->attach($request->tags);
+
+        return redirect()->route('categories.show', $request->category_id);
     }
 
     public function edit(Post $post)
