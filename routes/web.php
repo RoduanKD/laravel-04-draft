@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
 use App\Models\Post;
@@ -29,18 +30,8 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::get('/contact', function () {
-    return view('pages.contact');
-});
-
-Route::post('/message', function (Request $request) {
-    $request->validate([
-        'email' => 'required|email',
-        'message'   => 'required|min:10',
-    ]);
-
-    return redirect()->route('welcome');
-});
+Route::get('/contact', [MessageController::class, 'create']);
+Route::resource('messages', MessageController::class)->only('store');
 
 Route::resource('posts', PostController::class);
 Route::resource('categories', CategoryController::class);
