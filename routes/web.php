@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
 use App\Models\Post;
@@ -34,5 +35,6 @@ Route::get('/contact', [MessageController::class, 'create']);
 Route::resource('messages', MessageController::class)->only('store');
 
 Route::resource('posts', PostController::class);
+Route::resource('posts.comments', PostCommentController::class)->shallow()->except(['index', 'create', 'show']);/*->shallow()*/
 Route::resource('categories', CategoryController::class);
 Route::resource('tags', TagController::class);
