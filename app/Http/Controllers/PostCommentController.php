@@ -8,13 +8,7 @@ use Illuminate\Http\Request;
 
 class PostCommentController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request, Post $post)
     {
         $validated = $request->validate([
@@ -24,8 +18,19 @@ class PostCommentController extends Controller
         ]);
 
         // Comment::create(array_merge($validated, ['post_id' => $post->id]));
-        $post->comments()->create($validated);
+        $added = $post->comments()->create($validated);
 
+        // if($added){
+        //     return response()->json([
+        //         'status' => true ,
+        //         'message'   => 'comment added successfully',
+        //     ]);
+        // }else {
+        //     return response()->json([
+        //         'status' => false ,
+        //         'message'   => 'comment added failed ',
+        //     ]);
+        // }
         return redirect()->route('posts.show', $post);
     }
 
@@ -37,7 +42,7 @@ class PostCommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('comment.edit',['comment' => $comment]);
     }
 
     /**
@@ -49,17 +54,20 @@ class PostCommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $validation = $request->validate([
+            'name'  => 'required|min:2',
+            'email'  => 'required|min:2',
+            'content'  => 'required|min:2',
+        ]);
+
+        $comment->update($validation);
+        return redirect()->route('posts.show', $comment->post);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        return redirect()->back();
     }
 }
