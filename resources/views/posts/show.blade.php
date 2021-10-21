@@ -52,34 +52,5 @@
             <label>Comment: <textarea name="content"></textarea></label><br>
             <input type="submit" value="comment!">
         </form>
-        {{-- <a href="{{ route('posts.comments.edit') }}"></a> --}}
     </fieldset>
 @endsection
-
-{{-- @push('extend-js')
-    <script>
-        $(document).ready(function() {
-            $('.add-comment').on('click',(e)=>{
-                e.preventDefault() ;
-                var formData = new formData($('#form-add-comment')[0]);
-                $.ajax({
-                    type: "post",
-                    enctype : 'multipart/form-data',
-                    url: "{{ route('posts.comments.store') }}",
-                    data: formData,
-                    proccessData : false,
-                    contentType : false,
-                    cache : false,
-                    dataType: "dataType",
-                    success: function (response) {
-                        if(response.status == true)
-                            alert(response.message)
-                    },
-                    error : function (reject) {
-
-                    }
-                });
-            });
-        });
-    </script>
-@endpush --}}

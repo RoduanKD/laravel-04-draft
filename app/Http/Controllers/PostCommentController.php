@@ -18,19 +18,7 @@ class PostCommentController extends Controller
         ]);
 
         // Comment::create(array_merge($validated, ['post_id' => $post->id]));
-        $added = $post->comments()->create($validated);
-
-        // if($added){
-        //     return response()->json([
-        //         'status' => true ,
-        //         'message'   => 'comment added successfully',
-        //     ]);
-        // }else {
-        //     return response()->json([
-        //         'status' => false ,
-        //         'message'   => 'comment added failed ',
-        //     ]);
-        // }
+        $post->comments()->create($validated);
         return redirect()->route('posts.show', $post);
     }
 
@@ -42,7 +30,7 @@ class PostCommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        return view('comment.edit',['comment' => $comment]);
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
