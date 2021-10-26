@@ -31,7 +31,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::get('/contact', [MessageController::class, 'create']);
+Route::get('/contact', [MessageController::class, 'create'])->name('contact');
 Route::resource('messages', MessageController::class)->only('store');
 
 Route::resource('posts', PostController::class);
