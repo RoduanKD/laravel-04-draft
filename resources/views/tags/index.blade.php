@@ -3,13 +3,25 @@
 @section('title', '- Tags')
 
 @section('content')
-    <h3>Tags</h3>
-    <h6><a href="{{ route('tags.create') }}">Add new tag</a></h6>
-    @foreach ($tags as $tag)
-        <div>
-            <a href="{{ route('tags.show', $tag) }}">
-                <h4>{{ $tag->name }}</h4>
-            </a>
+<div class="section">
+    <div class="container">
+            <div class="level">
+                <div class="level-left">
+                 <h3 class="title is-2">Tags</h3>
+                </div>
+                <div class="level-right"><a class= "button is-light is-primary is-outlined" href="{{ route('tags.create') }}">Add new tag</a></div>
+            </div>
+                <aside class="menu">
+                    <ul class="menu-list">
+                    @foreach ($tags as $tag)
+                    <li>
+                        <a href="{{ route('tags.show', $tag) }}">
+                             <h4>{{ $tag->name }}</h4>
+                        </a>
+                    </li>
+                    @endforeach
+                    </ul>
+                </aside>
+            </div>
         </div>
-    @endforeach
 @endsection
