@@ -1,17 +1,25 @@
 @extends('layouts.app')
 
-@section('title', '- Home Page')
+@section('title', '-' . $category->name)
 
 @section('content')
-    <h3>{{ $category->name }}</h3>
-    <h6><a href="{{ route('categories.edit', $category) }}">edit</a></h6>
-    <h6>
-        <form action="{{ route('categories.destroy', $category) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <input type="submit" value="delete">
-        </form>
-    </h6>
-    <hr>
-    @each('partials.post', $category->posts, 'post')
+    <section class="section">
+        <div class="container">
+            <div class="level">
+                <div class="level-left">
+                    <div>
+                        <h2 class="title is-2">{{ $category->name }}</h2>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <form action="{{ route('categories.destroy', $category) }}" method="POST">
+                        <a class="button is-primary is-light is-outlined" href="{{ route('categories.edit', $category) }}">edit</a>
+                        @csrf
+                        @method('DELETE')
+                        <input class="button is-danger is-light is-outlined" type="submit" value="delete">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

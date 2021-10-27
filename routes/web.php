@@ -31,10 +31,10 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::get('/contact', [MessageController::class, 'create']);
+Route::get('/contact', [MessageController::class, 'create'])->name('contact');
 Route::resource('messages', MessageController::class)->only('store');
 
 Route::resource('posts', PostController::class);
-Route::resource('posts.comments', PostCommentController::class)->shallow()->except(['index', 'create', 'show']);/*->shallow()*/
+Route::resource('posts.comments', PostCommentController::class)->shallow()->except(['index', 'create', 'show']);
 Route::resource('categories', CategoryController::class);
 Route::resource('tags', TagController::class);

@@ -28,19 +28,15 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validation = $request->validate([
             'title'     => 'required|min:3',
             'content'   => 'required',
             'category_id'   => 'required|numeric|exists:categories,id',
             'tags'          => 'required|array|min:1|max:5',
             'tags.*'        => 'required|numeric|exists:tags,id',
         ]);
-
-        $post = new Post();
-        $post->title = $request->title;
-        $post->content = $request->content;
-        $post->category_id = $request->category_id;
-        $post->save();
+        // \dd($request);
+        $post = Post::create($validation);
 
         $post->tags()->attach($request->tags);
 
