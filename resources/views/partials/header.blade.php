@@ -1,4 +1,4 @@
-<div class="column is-4">
+<div class="column ">
     <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
         <div class="container">
             <div class="navbar-brand">

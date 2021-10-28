@@ -18,7 +18,6 @@
                     </div>
                 </div>
                 <div class="content">
-                    
                     <br>
                     <time datetime="2016-1-1">{{$category->created_at}}</time>
                 </div>
