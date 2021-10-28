@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('title', '- Home Page')
-
 @section('content')
     <h3>{{ $tag->name }}</h3>
     <h6><a href="{{ route('tags.edit', $tag) }}">edit</a></h6>
