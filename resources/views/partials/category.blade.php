@@ -18,6 +18,7 @@
                     </div>
                 </div>
                 <div class="content">
+                   This category has {{$category -> Posts()->count() }} posts
                     <br>
                     <time datetime="2016-1-1">{{$category->created_at}}</time>
                 </div>
