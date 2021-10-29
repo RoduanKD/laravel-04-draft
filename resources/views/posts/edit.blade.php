@@ -3,30 +3,56 @@
 @section('title', '- edit: ' . $post->title)
 
 @section('content')
-    <h2>Create New post</h2>
-    @if ($errors->any())
-        <div class="callout callout-danger">
-            <h5>
-                <i class="icon fas fa-ban " style="margin-right: 10px;color: #dd1616;"></i>Form Error
-            </h5>
-            <ul class="list-unstyled" style="margin-left: 1.9rem;">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-multiline is-vcentered">
+            <div class="column is-12 ">
+               <h2 class="title is-2">Edit Post</h2>
+            </div>
         </div>
-    @endif
-    <form action="{{ route('posts.update', $post) }}}}" method="POST">
+
+    <form action="{{ route('posts.update', $post) }}" method="POST">
         @method('PUT')
         @csrf
-        <label>
-            Title
-            <input type="text" name="title" value="{{ $post->title }}">
-        </label>
-        <br>
-        <label>
-            Content
-            <textarea name="content" cols="30" rows="10">{{ $post->content }}</textarea>
-        </label>
-    </form>
+
+       <div class="columns is-centered">
+        <div class="column is-6">
+            <div class="columns is-multiline is-vcentered">
+    <div class="column is-12">
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <input class="input @error('title') is-danger @enderror" name="title" type="text"
+                    placeholder="Post Title" value="{{ $post->title }}">
+            </div>
+            @error('title')
+                <p class="help is-danger">{{ $message }}</p>
+            @enderror
+        </div>
+    </div>
+
+    <div class="column is-12">
+        <div class="field">
+            <label class="label">Content</label>
+            <div class="control">
+                <textarea class="textarea @error('content') is-danger @enderror"
+                    placeholder="This is an example for post content" name="content" cols="30"
+                    rows="10">{{ $post->content }}</textarea>
+            </div>
+            @error('content')
+                <p class="help is-danger">{{ $message }}</p>
+            @enderror
+        </div>
+    </div>
+       <br>
+       <div class="column is-12">
+        <input type="submit" class="button is-primary is-outlined is-fullwidth" value="Edit Post">
+    </div>
+</div>
+</div>
+</div>
+      </form>
+</div>
+</section>
 @endsection
