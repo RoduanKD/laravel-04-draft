@@ -5,7 +5,7 @@
 @section('content')
     <section class="section" style="    height: 69vh;">
         <div class="container">
-            <form action="{{ route('tags.update',$tag) }}" method="POST">
+            <form action="{{ route('tags.update', $tag) }}" method="POST">
                 @method('PUT')
                 @csrf
                 <div class="columns is-centered">
@@ -16,11 +16,10 @@
                             </div>
                             <div class="column is-12">
                                 <div class="field">
-                                    <label class="label">name</label>
+                                    <label class="label">Tag Name</label>
                                     <div class="control">
                                         <input class="input @error('name') is-danger @enderror" name="name" type="text"
-                                            placeholder="Post name"
-                                            value="{{ $tag->name }}">
+                                            placeholder="tag name" value="{{ $tag->name }}">
                                     </div>
                                     @error('name')
                                         <p class="help is-danger">{{ $message }}</p>
@@ -28,9 +27,7 @@
                                 </div>
                             </div>
                             <div class="column is-12">
-                                <input  type="submit"
-                                        class="button is-primary is-outlined is-fullwidth"
-                                        value="Add new tag">
+                                <input type="submit" class="button is-primary is-outlined is-fullwidth" value="Add new tag">
                             </div>
                         </div>
                     </div>

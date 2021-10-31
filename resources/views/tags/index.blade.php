@@ -5,16 +5,19 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <div class="column is-12 block">
-                <h2 class="title is-2">All tags</h2>
+            <div class="level">
+                <div class="level-left">
+                    <h3 class="title is-2">All Tags</h3>
+                </div>
+                <div class="level-right">
+                    <a class="button is-primary is-outlined is-light" href="{{ route('tags.create') }}">Add new tag</a>
+                </div>
             </div>
-            <div class="columns" style="display: flex;justify-content: space-between;flex-wrap: wrap;padding: 1.5rem;">
+            <div class="buttons">
                 @foreach ($tags as $tag)
-                    <div class="button column is-3 is-primary is-light is-outlined">
-                            <a href="{{ route('tags.show', $tag) }}">
-                                <h4>{{ $tag->name }}</h4>
-                            </a>
-                    </div>
+                    <a class="button is-primary is-light is-outlined" href="{{ route('tags.show', $tag) }}">
+                        {{ $tag->name }} ({{ $tag->posts()->count() }})
+                    </a>
                 @endforeach
             </div>
         </div>
