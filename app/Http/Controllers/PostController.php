@@ -5,14 +5,37 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::paginate(6);
-        return view('posts.index', ['posts' => $posts]);
+        $request->validate([
+            'categories'    => 'array',
+            'tags'          => 'array',
+            'categories.*'  => 'numeric',
+            'tags.*'        => 'numeric',
+        ]);
+
+        $posts = Post::query();
+
+        if ($request->filled('categories')) {
+            $posts  = $posts->whereIn('category_id', $request->categories);
+        }
+
+        if ($request->filled('tags')) {
+            $posts  = $posts->whereHas('tags', function (Builder $q) use ($request) {
+                $q->whereIn('id', $request->tags);
+            });
+        }
+
+        $posts = $posts->paginate(6);
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('posts.index', ['posts' => $posts, 'categories' => $categories, 'tags' => $tags]);
     }
 
     public function create()
