@@ -15,6 +15,9 @@
             </div>
             <div class="columns is-multiline">
                 @each('partials.post', $posts, 'post')
+                <div class="column is-12">
+                    {{ $posts->links() }}
+                </div>
             </div>
         </div>
     </section>
