@@ -60,11 +60,13 @@ class PostController extends Controller
         $validation = $request->validate([
             'title'     => 'required|min:3',
             'content'   => 'required',
+            'featured_image'    => 'required|file|image',
             'category_id'   => 'required|numeric|exists:categories,id',
             'tags'          => 'required|array|min:1|max:5',
             'tags.*'        => 'required|numeric|exists:tags,id',
         ]);
-        // \dd($request);
+        // $request->dd();
+        $validation['featured_image'] = $request->featured_image->store('public/images');
         $post = Post::create($validation);
 
         $post->tags()->attach($request->tags);
