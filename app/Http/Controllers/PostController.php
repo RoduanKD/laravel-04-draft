@@ -19,7 +19,7 @@ class PostController extends Controller
             'tags.*'        => 'numeric',
         ]);
 
-        $posts = Post::query();
+        $posts = Post::latest();
 
         if ($request->filled('q')) {
             $posts->where('title', 'like', "%$request->q%");
@@ -71,7 +71,7 @@ class PostController extends Controller
 
         $post->tags()->attach($request->tags);
 
-        return redirect()->route('categories.show', $request->category_id);
+        return redirect()->route('posts.index');
     }
 
     public function edit(Post $post)
@@ -90,7 +90,7 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->save();
 
-        return redirect()->route('welcome');
+        return redirect()->route('posts.index');
     }
 
     public function destroy(Post $post)
