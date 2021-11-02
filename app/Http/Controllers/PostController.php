@@ -21,12 +21,17 @@ class PostController extends Controller
 
         $posts = Post::query();
 
+        if ($request->filled('q')) {
+            $posts->where('title', 'like', "%$request->q%");
+            $posts->orWhere('content', 'like', "%$request->q%");
+        }
+
         if ($request->filled('categories')) {
-            $posts  = $posts->whereIn('category_id', $request->categories);
+            $posts->whereIn('category_id', $request->categories);
         }
 
         if ($request->filled('tags')) {
-            $posts  = $posts->whereHas('tags', function (Builder $q) use ($request) {
+            $posts->whereHas('tags', function (Builder $q) use ($request) {
                 $q->whereIn('id', $request->tags);
             });
         }
