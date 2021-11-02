@@ -24,7 +24,9 @@ Route::get('/', function () {
     $skills = ['swimming', 'shooting', 'horse riding'];
     $picture = '/images/profile.png';
 
-    $posts = Post::all();
+    $posts = Post::paginate(6);
+    // $posts = Post::all();
+
     // dd($posts);
 
     return view('welcome', ['skills' => $skills, 'image' => $picture, 'posts' => $posts]);
