@@ -5,7 +5,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <form action="{{ route('posts.store') }}" method="POST">
+            <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="columns is-centered">
                     <div class="column is-6">
@@ -37,6 +37,35 @@
                                         <p class="help is-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
+                            </div>
+                            <div class="column is-12">
+                                <label class="label">Featured Image</label>
+                                <div id="file-js-example" class="file has-name">
+                                    <label class="file-label">
+                                        <input class="file-input" type="file" name="featured_image">
+                                        <span class="file-cta">
+                                            <span class="file-icon">
+                                                <i class="fas fa-upload"></i>
+                                            </span>
+                                            <span class="file-label">
+                                                Choose a file…
+                                            </span>
+                                        </span>
+                                        <span class="file-name">
+                                            No file uploaded
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <script>
+                                    const fileInput = document.querySelector('#file-js-example input[type=file]');
+                                    fileInput.onchange = () => {
+                                        if (fileInput.files.length > 0) {
+                                            const fileName = document.querySelector('#file-js-example .file-name');
+                                            fileName.textContent = fileInput.files[0].name;
+                                        }
+                                    }
+                                </script>
                             </div>
                             <div class="column is-12">
                                 <div class="field">
