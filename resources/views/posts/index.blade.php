@@ -15,10 +15,20 @@
             </div>
             <div class="columns">
                 <div class="column is-2">
-                    <div class="subtitle is-4">
-                        Filters
-                    </div>
                     <form action="{{ route('posts.index') }}">
+                        <div class="field">
+                            <label class="label">Search</label>
+                            <div class="control is-expanded has-icons-left">
+                                <input class="input" type="text" placeholder="Search ..." name="q"
+                                    value="{{ request()->query('q', '') }}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="subtitle is-4">
+                            Filters
+                        </div>
                         <div class="block">
                             <div class="subtitle is-5 mb-1">
                                 categories

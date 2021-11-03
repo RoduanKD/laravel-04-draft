@@ -19,14 +19,19 @@ class PostController extends Controller
             'tags.*'        => 'numeric',
         ]);
 
-        $posts = Post::query();
+        $posts = Post::latest();
+
+        if ($request->filled('q')) {
+            $posts->where('title', 'like', "%$request->q%");
+            $posts->orWhere('content', 'like', "%$request->q%");
+        }
 
         if ($request->filled('categories')) {
-            $posts  = $posts->whereIn('category_id', $request->categories);
+            $posts->whereIn('category_id', $request->categories);
         }
 
         if ($request->filled('tags')) {
-            $posts  = $posts->whereHas('tags', function (Builder $q) use ($request) {
+            $posts->whereHas('tags', function (Builder $q) use ($request) {
                 $q->whereIn('id', $request->tags);
             });
         }
@@ -55,16 +60,18 @@ class PostController extends Controller
         $validation = $request->validate([
             'title'     => 'required|min:3',
             'content'   => 'required',
+            'featured_image'    => 'required|file|image',
             'category_id'   => 'required|numeric|exists:categories,id',
             'tags'          => 'required|array|min:1|max:5',
             'tags.*'        => 'required|numeric|exists:tags,id',
         ]);
-        // \dd($request);
+        // $request->dd();
+        $validation['featured_image'] = $request->featured_image->store('public/images');
         $post = Post::create($validation);
 
         $post->tags()->attach($request->tags);
 
-        return redirect()->route('categories.show', $request->category_id);
+        return redirect()->route('posts.index');
     }
 
     public function edit(Post $post)
@@ -83,7 +90,7 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->save();
 
-        return redirect()->route('welcome');
+        return redirect()->route('posts.index');
     }
 
     public function destroy(Post $post)
