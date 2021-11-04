@@ -24,7 +24,7 @@ Route::get('/', function () {
     $skills = ['swimming', 'shooting', 'horse riding'];
     $picture = '/images/profile.png';
 
-    $posts = Post::paginate(6);
+    $posts = Post::latest()->paginate(6);
     // $posts = Post::all();
 
     // dd($posts);
