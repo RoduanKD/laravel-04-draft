@@ -40,3 +40,11 @@ Route::resource('posts', PostController::class);
 Route::resource('posts.comments', PostCommentController::class)->shallow()->except(['index', 'create', 'show']);
 Route::resource('categories', CategoryController::class);
 Route::resource('tags', TagController::class);
+
+Route::get('lang/{locale}', function ($locale) {
+    // config(['app.locale' => $locale]);
+    app()->setlocale($locale);
+    session(['locale' => $locale]);
+    return redirect()->route('welcome');
+    // dd(config('app.locale'), session('locale', 'en'));
+})->name('changeLocale');

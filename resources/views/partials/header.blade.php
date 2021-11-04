@@ -44,6 +44,10 @@
             </div>
 
             <div class="navbar-end">
+                <a class="navbar-item"
+                    href="{{ route('changeLocale', config('app.locale') == 'en' ? 'ar' : 'en') }}">
+                    {{ config('app.locale') == 'en' ? 'ar' : 'en' }}
+                </a>
                 <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-primary">
