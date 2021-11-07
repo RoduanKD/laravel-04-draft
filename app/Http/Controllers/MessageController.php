@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeEmail;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -33,7 +35,7 @@ class MessageController extends Controller
         ]);
 
         Message::create($validated);
-
+        Mail::to($request->email)->send(new WelcomeEmail($request->fname));
         return redirect()->route('welcome');
     }
 }
