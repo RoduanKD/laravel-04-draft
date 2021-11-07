@@ -16,28 +16,28 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="{{ route('welcome') }}">
-                    Home
+                    {{ __('Home') }}
                 </a>
 
                 <a class="navbar-item" href="{{ route('posts.index') }}">
-                    Posts
+                    {{ __('Posts') }}
                 </a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        More
+                        {{ __('More') }}
                     </a>
 
                     <div class="navbar-dropdown">
                         <a class="navbar-item" href="{{ route('categories.index') }}">
-                            Categories
+                            {{ __('Categories') }}
                         </a>
                         <a class="navbar-item" href="{{ route('tags.index') }}">
-                            Tags
+                            {{ __('Tags') }}
                         </a>
                         <hr class="navbar-divider">
                         <a class="navbar-item" href="{{ route('contact') }}">
-                            Contact
+                            {{ __('Contact') }}
                         </a>
                     </div>
                 </div>
@@ -51,10 +51,10 @@
                 <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-primary">
-                            <strong>Sign up</strong>
+                            <strong>{{ __('Sign up') }}</strong>
                         </a>
                         <a class="button is-light">
-                            Log in
+                            {{ __('Log in') }}
                         </a>
                     </div>
                 </div>

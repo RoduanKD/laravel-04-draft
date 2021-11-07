@@ -3,7 +3,7 @@
 @section('title', '- edit: ' . $post->title_en)
 
 @section('content')
-    <h2>Create New post</h2>
+    <h2 class="title.is-2">{{ __('messages.edit', ['item' => __('Search')]) }}</h2>
     @if ($errors->any())
         <div class="callout callout-danger">
             <h5>
