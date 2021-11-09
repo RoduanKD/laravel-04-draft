@@ -48,16 +48,26 @@
                     href="{{ route('changeLocale', config('app.locale') == 'en' ? 'ar' : 'en') }}">
                     {{ config('app.locale') == 'en' ? 'ar' : 'en' }}
                 </a>
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>{{ __('Sign up') }}</strong>
-                        </a>
-                        <a class="button is-light">
-                            {{ __('Log in') }}
-                        </a>
+                @auth
+                    <div class="navbar-item">
+                        <span class="mx-3">{{ __('Hello ') }}{{ Auth::user()->name }}!</span>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="button is-outlined" type="submit">{{ __('Logout') }}</button>
+                        </form>
                     </div>
-                </div>
+                @else
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a href="{{ route('register') }}" class="button is-primary">
+                                <strong>{{ __('Sign up') }}</strong>
+                            </a>
+                            <a href="{{ route('login') }}" class="button is-light">
+                                {{ __('Log in') }}
+                            </a>
+                        </div>
+                    </div>
+                @endauth
             </div>
         </div>
     </div>
