@@ -48,8 +48,8 @@ Route::get('lang/{locale}', function ($locale) {
     session(['locale' => $locale]);
     return redirect()->route('welcome');
     // dd(config('app.locale'), session('locale', 'en'));
-})->name('changeLocale');
+})->name('changeLocale')/*->middleware('password.confirm')*/;
 
-Auth::routes();
+Auth::routes(['register' => false, 'verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

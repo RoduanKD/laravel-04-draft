@@ -9,9 +9,11 @@
                 <div class="level-left">
                     <h3 class="title is-2">{{ __('messages.my-posts') }}</h3>
                 </div>
-                <div class="level-right">
-                    <a class="button is-primary is-outlined is-light" href="{{ route('posts.create') }}">Add new post</a>
-                </div>
+                @auth
+                    <div class="level-right">
+                        <a class="button is-primary is-outlined is-light" href="{{ route('posts.create') }}">Add new post</a>
+                    </div>
+                @endauth
             </div>
             <div class="columns">
                 <div class="column is-2">

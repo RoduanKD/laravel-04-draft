@@ -19,7 +19,12 @@
                     {{ __('Before proceeding, please check your email for a verification link.') }}
                 </p>
                 <p>
-                    {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+                    {{ __('If you did not receive the email') }},
+                <form action="{{ route('verification.resend') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="button is-text"
+                        href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</button>
+                </form>.
                 </p>
             </div>
         @endcomponent
