@@ -7,17 +7,19 @@
         <div class="container">
             <div class="level">
                 <div class="level-left">
-                    <h3 class="title is-2">My Posts</h3>
+                    <h3 class="title is-2">{{ __('messages.my-posts') }}</h3>
                 </div>
-                <div class="level-right">
-                    <a class="button is-primary is-outlined is-light" href="{{ route('posts.create') }}">Add new post</a>
-                </div>
+                @auth
+                    <div class="level-right">
+                        <a class="button is-primary is-outlined is-light" href="{{ route('posts.create') }}">Add new post</a>
+                    </div>
+                @endauth
             </div>
             <div class="columns">
                 <div class="column is-2">
                     <form action="{{ route('posts.index') }}">
                         <div class="field">
-                            <label class="label">Search</label>
+                            <label class="label">{{ __('Search') }}</label>
                             <div class="control is-expanded has-icons-left">
                                 <input class="input" type="text" placeholder="Search ..." name="q"
                                     value="{{ request()->query('q', '') }}">
