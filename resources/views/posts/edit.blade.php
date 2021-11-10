@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', '- edit: ' . $post->title)
+@section('title', '- edit: ' . $post->title_en)
 
 @section('content')
-    <h2>Create New post</h2>
+    <h2 class="title.is-2">{{ __('messages.edit', ['item' => __('Search')]) }}</h2>
     @if ($errors->any())
         <div class="callout callout-danger">
             <h5>
@@ -21,12 +21,12 @@
         @csrf
         <label>
             Title
-            <input type="text" name="title" value="{{ $post->title }}">
+            <input type="text" name="title" value="{{ $post->title_en }}">
         </label>
         <br>
         <label>
             Content
-            <textarea name="content" cols="30" rows="10">{{ $post->content }}</textarea>
+            <textarea name="content" cols="30" rows="10">{{ $post->content_en }}</textarea>
         </label>
     </form>
 @endsection
