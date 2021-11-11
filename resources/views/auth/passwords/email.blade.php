@@ -1,52 +1,51 @@
-@extends('layouts.app')
+@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'email', 'title' => __('Material Dashboard')])
 
 @section('content')
-    @component('components.full-page-section')
+<div class="container" style="height: auto;">
+  <div class="row align-items-center">
+    <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+      <form class="form" method="POST" action="{{ route('password.email') }}">
+        @csrf
 
-        @if (session('status'))
-            <div class="notification is-success" role="alert">
-                {{ session('status') }}
+        <div class="card card-login card-hidden mb-3">
+          <div class="card-header card-header-primary text-center">
+            <h4 class="card-title"><strong>{{ __('Forgot Password') }}</strong></h4>
+          </div>
+          <div class="card-body">
+            @if (session('status'))
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <i class="material-icons">close</i>
+                    </button>
+                    <span>{{ session('status') }}</span>
+                  </div>
+                </div>
+              </div>
+            @endif
+            <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons">email</i>
+                  </span>
+                </div>
+                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
+              </div>
+              @if ($errors->has('email'))
+                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
+                  <strong>{{ $errors->first('email') }}</strong>
+                </div>
+              @endif
             </div>
-        @endif
-
-        @component('components.card')
-            @slot('title')
-                {{ __('Reset Password') }}
-            @endslot
-
-            <form method="POST" action="{{ route('password.email') }}">
-                @csrf
-
-                <div class="field">
-                    <label class="label" for="email">{{ __('E-Mail Address') }}</label>
-                    <div class="control">
-                        <input id="email" type="email" class="input @error('email') is-danger @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                    </div>
-
-                    @error('email')
-                        <p class="help is-danger" role="alert">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                </div>
-
-                <hr>
-
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button type="submit" class="button is-primary">
-                            {{ __('Send Password Reset Link') }}
-                        </button>
-                    </div>
-                    <div class="control">
-                        <a class="button is-text" href="{{ route('login') }}">
-                            {{ __('Back') }}
-                        </a>
-                    </div>
-                </div>
-
-            </form>
-
-        @endcomponent
-    @endcomponent
+          </div>
+          <div class="card-footer justify-content-center">
+            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Send Password Reset Link') }}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 @endsection
