@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeEmail;
 use App\Models\Message;
+use App\Models\User;
+use App\Notifications\MessageReceived;
 use Illuminate\Http\Request;
-use MessageFormatter;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -34,7 +37,8 @@ class MessageController extends Controller
         ]);
 
         Message::create($validated);
-
+        Mail::to($request->email)->send(new WelcomeEmail($request->fname));
+        User::where('email', 'admin@admin.com')->first()->notify(new MessageReceived);
         return redirect()->route('welcome');
     }
 }

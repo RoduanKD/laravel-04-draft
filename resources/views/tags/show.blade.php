@@ -1,25 +1,27 @@
-@extends('layouts.app')
+@extends('layouts.public')
 
-@section('title', '- Home Page')
+@section('title', "- {$tag->name}")
 
 @section('content')
-
-    <div class="section">
+    <section class="section">
         <div class="container">
             <div class="level">
                 <div class="level-left">
-                    <h3 class="title is-2">{{ $tag->name }}</h3>
+                    <h2 class="title is-2">{{ $tag->name }}</h2>
                 </div>
                 <div class="level-right">
                     <form action="{{ route('tags.destroy', $tag) }}" method="POST">
+                        <a class="button is-primary is-outlined is-light" href="{{ route('tags.edit', $tag) }}">edit</a>
                         @csrf
                         @method('DELETE')
-                        <a class= "button is-light is-primary is-outlined" href="{{ route('tags.edit', $tag) }}">edit</a>
-                            <input class= "button is-light is-danger is-outlined " type="submit" value="delete">
-                        </form>
+                        <input type="submit" value="delete" class="button is-danger is-outlined is-light">
+                    </form>
                 </div>
             </div>
-            @each('partials.post', $tag->posts, 'post')
+            <hr>
+            <div class="columns is-multiline">
+                @each('partials.post', $tag->posts, 'post')
+            </div>
         </div>
-    </div>
+    </section>
 @endsection
