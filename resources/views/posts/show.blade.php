@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.public')
 
-@section('title', '-' . $post->title)
+@section('title', '-' . $post->title_en)
 
 @section('content')
     <section class="section">
@@ -8,7 +8,7 @@
             <div class="level">
                 <div class="level-left">
                     <div>
-                        <h2 class="title is-2">{{ $post->title }}</h2>
+                        <h2 class="title is-2">{{ $post->title_en }}</h2>
                         <h5 class="subtitle is-5">Category: {{ $post->category->name }}</h5>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <p class="block">
-                {{ $post->content }}
+                {{ $post->content_en }}
             </p>
             <hr>
             <div class="block">
