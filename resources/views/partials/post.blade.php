@@ -14,7 +14,8 @@
                         </figure>
                     </div>
                     <div class="media-content">
-                        <p class="title is-4">{{ $post->title }}</p>
+                        <p class="title is-4">
+                            {{ app()->getLocale() == 'en' ? $post->title_en : $post->title_ar }}</p>
                         <p class="subtitle is-6">
                             @author
                             -
@@ -24,7 +25,7 @@
                     </div>
                 </div>
                 <div class="content">
-                    {{ substr($post->content, 0, 30) }} ...
+                    {!! $post->content !!} ...
                     <br>
                     @foreach ($post->tags as $tag)
                         <a href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
