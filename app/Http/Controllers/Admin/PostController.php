@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Stevebauman\Purify\Facades\Purify;
 
 class PostController extends Controller
 {
@@ -15,7 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::paginate(10);
+        return view('admin.posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -25,7 +29,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.posts.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -36,7 +42,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'title_en'     => 'required|min:3',
+            'title_ar'     => 'required|min:3',
+            'content_en'   => 'required',
+            'content_ar'   => 'required',
+            'featured_image'    => 'required|file|image',
+            'category_id'   => 'required|numeric|exists:categories,id',
+            'tags'          => 'required|array|min:1|max:5',
+            'tags.*'        => 'required|numeric|exists:tags,id',
+        ]);
+        // $request->dd();
+        $validation['featured_image'] = $request->featured_image->store('public/images');
+        $validation['content_en'] = Purify::clean($request->content_en);
+        $post = Post::create($validation);
+
+        $post->tags()->attach($request->tags);
+
+        return redirect()->route('posts.index');
     }
 
     /**
