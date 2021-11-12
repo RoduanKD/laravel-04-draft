@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="content">
-                    {{ substr($post->content, 0, 30) }} ...
+                    {!! $post->content !!} ...
                     <br>
                     @foreach ($post->tags as $tag)
                         <a href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
