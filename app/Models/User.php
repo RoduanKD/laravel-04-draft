@@ -10,16 +10,14 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable implements MustVerifyEmail , HasMedia
+class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
-    use InteractsWithMedia;
     protected $fillable = [
         'name',
         'email',
         'password',
-        'post_id',
     ];
 
     /**
@@ -41,9 +39,8 @@ class User extends Authenticatable implements MustVerifyEmail , HasMedia
         'email_verified_at' => 'datetime',
     ];
 
-
-    // relationship with posts "admin has many posts":
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 }
