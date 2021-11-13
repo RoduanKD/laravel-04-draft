@@ -78,6 +78,13 @@
                     <p>{{ __('Posts') }}</p>
                 </a>
             </li>
+            <li class="nav-item{{ $activePage == 'Messages' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.messages.index') }}">
+                    <i class="material-icons">description</i>
+                    <p>{{ __('Message') }}</p>
+                </a>
+            </li>
+
             <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('language') }}">
                     <i class="material-icons">language</i>

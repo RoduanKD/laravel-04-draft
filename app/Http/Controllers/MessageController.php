@@ -38,7 +38,7 @@ class MessageController extends Controller
 
         Message::create($validated);
         Mail::to($request->email)->send(new WelcomeEmail($request->fname));
-        User::where('email', 'admin@admin.com')->first()->notify(new MessageReceived);
+        User::first('email', 'admin@admin.com')->first()->notify(new MessageReceived);
         return redirect()->route('welcome');
     }
 }
