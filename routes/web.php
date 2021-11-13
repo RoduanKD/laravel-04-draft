@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\MessageController as AdminMessageController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PostCommentController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Models\Post;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,14 +33,18 @@ Route::get('/', function () {
     $picture = '/images/profile.png';
 
     $posts = Post::latest()->paginate(6);
-    // $posts = Post::all();
 
-    // dd($posts);
+    $setting = Setting::all()->last();
+    return view('welcome', [
+        'skills'    => $skills,
+        'image'     => $picture,
+        'posts'     => $posts,
+        'setting'   => $setting
+    ]);
 
-    return view('welcome', ['skills' => $skills, 'image' => $picture, 'posts' => $posts]);
 })->name('welcome');
 
-
+Route::view('/about', 'pages.about');
 Route::get('/contact', [MessageController::class, 'create'])->name('contact');
 Route::resource('messages', MessageController::class)->only('store');
 Route::resource('posts', PostController::class);
@@ -94,4 +101,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::put('profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::resource('posts', AdminPostController::class);
     Route::resource('services', AdminServiceController::class);
+    Route::resource('messages', AdminMessageController::class);
+    Route::resource('settings', SettingController::class);
 });

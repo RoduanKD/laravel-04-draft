@@ -6,7 +6,7 @@
     <section class="section">
         <div class="container">
             <div class="coulmns is-centered is-multiline">
-                <div class="coulmn is -10">
+                <div class="coulmn is-10">
                     <h2 class="title is-2">Create New category</h2>
                     <form action="{{ route('categories.store') }}" method="POST">
                         @csrf
@@ -21,11 +21,11 @@
                             @enderror
                         </div>
                         <div class="column is-12"><input type="submit" class="button is-primary is-outlined is-fullwidth"
-                                value="Add new Categories">
+                                value="Add new Category">
                         </div>
                     </form>
-                @endsection
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+@endsection
