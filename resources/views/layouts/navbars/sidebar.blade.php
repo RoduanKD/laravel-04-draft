@@ -78,16 +78,16 @@
                     <p>{{ __('Posts') }}</p>
                 </a>
             </li>
+            <li class="nav-item{{ $activePage == 'settings' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.settings.create') }}">
+                    <i class="material-icons">description</i>
+                    <p>{{ __('Settings') }}</p>
+                </a>
+            </li>
             <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('language') }}">
                     <i class="material-icons">language</i>
                     <p>{{ __('RTL Support') }}</p>
-                </a>
-            </li>
-            <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
-                <a class="nav-link text-white bg-danger" href="{{ route('upgrade') }}">
-                    <i class="material-icons text-white">unarchive</i>
-                    <p>{{ __('Upgrade to PRO') }}</p>
                 </a>
             </li>
         </ul>
