@@ -36,7 +36,7 @@ Route::get('/', function () {
     return view('welcome', ['skills' => $skills, 'image' => $picture, 'posts' => $posts]);
 })->name('welcome');
 
-
+Route::view('/about', 'pages.about');
 Route::get('/contact', [MessageController::class, 'create'])->name('contact');
 Route::resource('messages', MessageController::class)->only('store');
 Route::resource('posts', PostController::class);
