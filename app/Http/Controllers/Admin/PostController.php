@@ -43,16 +43,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // \dd($request->all());
         $validation = $request->validate([
-                'title_en'     => 'required|min:3',
-                'title_ar'     => 'required|min:3',
-                'content_en'   => 'required',
-                'content_ar'   => 'required',
-                'featured_image'    => 'required|file|image',
-                'category_id'   => 'required|numeric|exists:categories,id',
-                'tags'          => 'required|array|min:1|max:5',
-                'tags.*'        => 'required|numeric|exists:tags,id',
+            'title_en'     => 'required|min:3',
+            'title_ar'     => 'required|min:3',
+            'content_en'   => 'required',
+            'content_ar'   => 'required',
+            'featured_image'    => 'required|file|image',
+            'category_id'   => 'required|numeric|exists:categories,id',
+            'tags'          => 'required|array|min:1|max:5',
+            'tags.*'        => 'required|numeric|exists:tags,id',
         ]);
         $validation['featured_image'] = $request->featured_image->store('public/images');
         $validation['user_id'] = Auth::user()->id;

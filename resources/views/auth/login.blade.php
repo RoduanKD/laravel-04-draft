@@ -85,7 +85,7 @@
                     <div class="col-6">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" class="text-light">
-                                <small>{{ __('Forgot password?') }}</small>a
+                                <small>{{ __('Forgot password?') }}</small>
                             </a>
                         @endif
                     </div>
@@ -94,7 +94,6 @@
                                 <small>{{ __('Create new account') }}</small>
                             </a>
                         </div> --}}
-                    <a href="{{ route('register') }}">register</a>
                 </div>
             </div>
         </div>
