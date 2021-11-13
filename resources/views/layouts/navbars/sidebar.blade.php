@@ -78,6 +78,18 @@
                     <p>{{ __('Posts') }}</p>
                 </a>
             </li>
+            <li class="nav-item{{ $activePage == 'subscriptions' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.subscribers.index') }}">
+                    <i class="material-icons">subscriptions</i>
+                    <p>{{ __('subscriptions') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'newsletter' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.newsletters.index') }}">
+                    <i class="material-icons">newspaper</i>
+                    <p>{{ __('newsletter') }}</p>
+                </a>
+            </li>
             <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('language') }}">
                     <i class="material-icons">language</i>

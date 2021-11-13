@@ -22,6 +22,9 @@
                 <a class="navbar-item" href="{{ route('posts.index') }}">
                     {{ __('Posts') }}
                 </a>
+                <a class="navbar-item" href="{{ route('subscribers.create') }}">
+                    {{ __('subscribe') }}
+                </a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
