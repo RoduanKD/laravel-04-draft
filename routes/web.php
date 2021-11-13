@@ -49,6 +49,7 @@ Route::resource('messages', MessageController::class)->only('store');
 Route::resource('posts', PostController::class);
 Route::resource('posts.comments', PostCommentController::class)->shallow()->except(['index', 'create', 'show']);
 Route::resource('tags', TagController::class);
+Route::resource('tags', CategoryController::class);
 
 Route::get('lang/{locale}', function ($locale) {
     // config(['app.locale' => $locale]);
