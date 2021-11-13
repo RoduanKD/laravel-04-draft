@@ -20,7 +20,8 @@
                         @error('name')
                             <p class="help is-danger">{{ $message }}</p>
                         @enderror
-                        <div class="block"><input type="submit"class="button is-primary is-outlined " value="Add new Post"></div>
+                        <div class="block"><input type="submit" class="button is-primary is-outlined "
+                                value="Add new Post"></div>
                     </div>
                 </form>
             </div>

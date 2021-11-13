@@ -108,7 +108,7 @@
                                                                                 <tr>
                                                                                     <td align="center"
                                                                                         class="esd-block-text es-p10t es-p10b">
-                                                                                        <p>{{$content}}
+                                                                                        <p>{{ $content }}
                                                                                         </p>
                                                                                     </td>
                                                                                 </tr>

@@ -84,7 +84,6 @@
                     <p>{{ __('Message') }}</p>
                 </a>
             </li>
-
             <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('language') }}">
                     <i class="material-icons">language</i>

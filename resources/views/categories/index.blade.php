@@ -1,6 +1,7 @@
 @extends('layouts.public')
 
 @section('title', '- All Categories')
+
 @section('content')
     <section class="section">
         <div class="container">
@@ -9,7 +10,8 @@
                     <h3 class="title is-3">My Categories</h3>
                 </div>
                 <div class="level-right">
-                    <a class="button is-primary is-outlined is-light" href="{{ route('categories.create') }}">Add new category</a>
+                    <a class="button is-primary is-outlined is-light" href="{{ route('categories.create') }}">Add new
+                        category</a>
                 </div>
             </div>
             <div class="columns is-multiline">

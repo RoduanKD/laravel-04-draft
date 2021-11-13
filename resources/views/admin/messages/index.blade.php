@@ -35,21 +35,23 @@
                                     <tbody>
                                         @foreach ($messages as $message)
 
-                                                <td>
-                                                <a href="{{route('admin.messages.show',$message)}}">{{ $message->fname }}</a>
-                                                </td>
-                                                <td>
-                                                    {{$message->lname}}
-                                                </td>
-                                                <td>
-                                                    {{$message->email}}
-                                                </td>
-                                                <td>
-                                                    {{ $message->created_at }}
-                                                </td>
-                                                <td>
-                                                   <a href="{{route('admin.messages.create')}}"><button class="btn btn-info">Replay</button></a></a>
-                                                </td>
+                                            <td>
+                                                <a
+                                                    href="{{ route('admin.messages.show', $message) }}">{{ $message->fname }}</a>
+                                            </td>
+                                            <td>
+                                                {{ $message->lname }}
+                                            </td>
+                                            <td>
+                                                {{ $message->email }}
+                                            </td>
+                                            <td>
+                                                {{ $message->created_at }}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.messages.create') }}"><button
+                                                        class="btn btn-info">Replay</button></a></a>
+                                            </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -66,5 +68,4 @@
             </div>
         </div>
     </div>
-
 @endsection
