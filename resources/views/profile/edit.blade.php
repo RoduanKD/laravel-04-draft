@@ -5,7 +5,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="{{ route('admin.profile.update') }}" enctype="multipart/form-data" class="form-horizontal">
+                    <form method="post" action="{{ route('admin.profile.update') }}" enctype="multipart/form-data"
+                        class="form-horizontal">
                         @csrf
                         @method('put')
                         <div class="card ">
@@ -14,7 +15,8 @@
                                 <p class="card-category">{{ __('User information') }}</p>
                             </div>
                             <div class="image m-auto pt-3">
-                                <img src="{{ Auth::user()->getFirstMediaUrl() }}" class="img-thumbnail is-marginless" width="100%" height="100%" alt="">
+                                <img src="{{ Auth::user()->getFirstMediaUrl('avatar') }}"
+                                    class="img-thumbnail is-marginless" width="100%" height="100%" alt="">
                             </div>
                             <div class="card-body ">
                                 @if (session('status'))
@@ -65,10 +67,8 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Upload image') }}</label>
                                     <div class="col-sm-7">
                                         <div class="{{ $errors->has('image') ? ' has-danger' : '' }}">
-                                            <input class="{{ $errors->has('image') ? ' is-invalid' : '' }}"
-                                                    name="image"
-                                                    type="file"
-                                                    required />
+                                            <input class="{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image"
+                                                type="file" required />
                                             @if ($errors->has('image'))
                                                 <span id="image-error" class="error text-danger"
                                                     for="input-image">{{ $errors->first('image') }}</span>

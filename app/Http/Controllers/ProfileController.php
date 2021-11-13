@@ -29,8 +29,7 @@ class ProfileController extends Controller
         auth()->user()->update($request->all());
 
         if ($request->image) {
-            auth()->user()->clearMediaCollection();
-            auth()->user()->addMediaFromRequest('image')->toMediaCollection();
+            auth()->user()->addMediaFromRequest('image')->toMediaCollection('avatar');
         }
 
         return back()->withStatus(__('Profile successfully updated.'));

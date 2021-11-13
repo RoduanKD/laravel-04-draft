@@ -48,4 +48,12 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         return $this->hasMany(Post::class);
     }
+
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('avatar')
+            ->useFallbackUrl('https://ui-avatars.com/api/?background=random&size=128&color=fff&name=' . $this->name)
+            ->singleFile();
+    }
 }

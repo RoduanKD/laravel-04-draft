@@ -10,7 +10,7 @@
                 <div class="media">
                     <div class="media-left">
                         <figure class="image is-48x48">
-                            <img src="{{ $post->user->getFirstMediaUrl() }}" alt="Placeholder image">
+                            <img src="{{ $post->user->getFirstMediaUrl('avatar') }}" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="media-content">
@@ -19,7 +19,8 @@
                         <p class="subtitle is-6">
                             {{ $post->user->name }}
                             -
-                            <a href="{{ route('categories.show', $post->category) }}">{{ $post->category->name }}</a>
+                            <a
+                                href="{{ route('categories.show', $post->category) }}">{{ $post->category->name }}</a>
                         </p>
                     </div>
                 </div>
