@@ -78,6 +78,12 @@
                     <p>{{ __('Posts') }}</p>
                 </a>
             </li>
+            <li class="nav-item{{ $activePage == 'services' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.services.index') }}">
+                    <i class="material-icons">work</i>
+                    <p>{{ __('Services') }}</p>
+                </a>
+            </li>
             <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('language') }}">
                     <i class="material-icons">language</i>
