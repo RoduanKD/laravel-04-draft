@@ -21,6 +21,8 @@ class CreateServicesTable extends Migration
             $table->text('description_ar');
             $table->text('description_en');
             $table->timestamps();
+            $table->softDeletes();
+            // you can add softdelete here there is no need for another migration
         });
     }
 

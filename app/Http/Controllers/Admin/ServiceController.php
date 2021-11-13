@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Models\Service;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -47,6 +48,7 @@ class ServiceController extends Controller
             'featured_image'    => 'required|file|image',
         ]);
         $validation['featured_image'] = $request->featured_image->store('public/images');
+        // please add purification here like Admin/PostController@store
         $service = Service::create($validation);
 
 
@@ -62,7 +64,6 @@ class ServiceController extends Controller
     public function show(Service $service)
     {
         return view('admin.services.show', ['service' => $service]);
-
     }
 
     /**
@@ -74,7 +75,6 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         return view('admin.services.edit', ['service' => $service]);
-
     }
 
     /**
@@ -84,11 +84,13 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Service $service , Request $request)
+    public function update(Service $service, Request $request)
     {
         $validation = $request->validate([
             'name_en'     => 'required|min:3',
-            'name_ar'     => 'required|min:3',]);
+            'name_ar'     => 'required|min:3',
+            // validations are missing descriptions
+        ]);
 
         $service->update($validation);
 

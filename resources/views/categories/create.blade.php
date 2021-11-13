@@ -20,12 +20,12 @@
                                 <p class="help is-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="column is-12"><input type="submit"
-                            class="button is-primary is-outlined is-fullwidth" value="Add new Categories">
-                    </div>
+                        <div class="column is-12"><input type="submit" class="button is-primary is-outlined is-fullwidth"
+                                value="Add new Categories">
+                        </div>
                     </form>
-                    @endsection
-                </div>
+                @endsection
             </div>
         </div>
-    </section>
+    </div>
+</section>

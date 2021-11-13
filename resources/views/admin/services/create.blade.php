@@ -8,7 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#summernote').summernote();
+            $('#summer-01').summernote();
+            $('#summer-02').summernote();
         });
     </script>
 @endpush
@@ -59,8 +60,7 @@
                                     <label class="col-sm-2 col-form-label">{{ __('English Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name_en') ? ' has-danger' : '' }}">
-                                            <input
-                                                class="form-control{{ $errors->has('name_en') ? ' is-invalid' : '' }}"
+                                            <input class="form-control{{ $errors->has('name_en') ? ' is-invalid' : '' }}"
                                                 name="name_en" id="input-name-ar" type="text"
                                                 placeholder="{{ __('English Name') }}" value="{{ old('name_en') }}"
                                                 required="true" aria-required="true" />
@@ -88,7 +88,7 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Arabic description') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('description_ar') ? ' has-danger' : '' }}">
-                                            <textarea
+                                            <textarea id="summer-01"
                                                 class="form-control{{ $errors->has('description_ar') ? ' is-invalid' : '' }}"
                                                 name="description_ar" id="input-description_ar"
                                                 placeholder="{{ __('Arabic description') }}"
@@ -104,7 +104,7 @@
                                     <label class="col-sm-2 col-form-label">{{ __('English description') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('description_en') ? ' has-danger' : '' }}">
-                                            <textarea
+                                            <textarea id="summer-02"
                                                 class="form-control{{ $errors->has('description_en') ? ' is-invalid' : '' }}"
                                                 name="description_en" id="input-description_en"
                                                 placeholder="{{ __('English description') }}"
@@ -117,10 +117,10 @@
                                     </div>
                                 </div>
 
-                            <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                                <div class="card-footer ml-auto mr-auto">
+                                    <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                                </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>
