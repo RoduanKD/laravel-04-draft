@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\SubscriberController as AdminSubscriberController;
+use App\Http\Controllers\Admin\NewsletterController as AdminNewsletterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Models\Post;
@@ -43,6 +46,7 @@ Route::resource('posts', PostController::class);
 Route::resource('posts.comments', PostCommentController::class)->shallow()->except(['index', 'create', 'show']);
 Route::resource('categories', CategoryController::class);
 Route::resource('tags', TagController::class);
+Route::resource('subscribers', SubscriberController::class);
 
 Route::get('lang/{locale}', function ($locale) {
     // config(['app.locale' => $locale]);
@@ -92,4 +96,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::resource('posts', AdminPostController::class);
+    Route::resource('subscribers', AdminSubscriberController::class);
+    Route::resource('newsletters', AdminNewsletterController::class);
 });
