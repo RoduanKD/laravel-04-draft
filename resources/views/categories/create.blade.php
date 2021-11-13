@@ -4,26 +4,27 @@
 
 @section('content')
     <section class="section">
-        <div class="columes">
-            <div class="colume">
-                <h2 class="title is-2">Create New category</h2>
-                <form action="{{ route('categories.store') }}" method="POST">
-                    @csrf
-                    <div class="field">
-                        <div class="block"><label class="label">Name</label></div>
-                        <div class="block">
+        <div class="container">
+            <div class="coulmns is-centered is-multiline">
+                <div class="coulmn is-10">
+                    <h2 class="title is-2">Create New category</h2>
+                    <form action="{{ route('categories.store') }}" method="POST">
+                        @csrf
+                        <div class="field">
+                            <label class="label">Name</label>
                             <div class="control">
                                 <input class="input @error('name') is-danger @enderror" name="name" type="text"
-                                    value="{{ old('name') }}">
+                                    placeholder="categories Title" value="{{ old('name') }}">
                             </div>
+                            @error('name')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
-                        @error('name')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                        <div class="block"><input type="submit" class="button is-primary is-outlined "
-                                value="Add new Post"></div>
-                    </div>
-                </form>
+                        <div class="column is-12"><input type="submit" class="button is-primary is-outlined is-fullwidth"
+                                value="Add new Category">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>

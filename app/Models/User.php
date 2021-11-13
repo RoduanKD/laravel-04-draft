@@ -53,7 +53,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         $this
             ->addMediaCollection('avatar')
-            ->useFallbackUrl('https://ui-avatars.com/api/?background=random&size=128&color=fff&name=' . $this->name)
+            ->useFallbackUrl('https://ui-avatars.com/api/?background=random&size=128&color=ffffff&name=' . $this->name)
             ->singleFile();
     }
 }

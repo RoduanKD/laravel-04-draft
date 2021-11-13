@@ -134,7 +134,8 @@
                                 </div>
                             </div>
                             <div class="column is-12"><input type="submit"
-                                    class="button is-primary is-outlined is-fullwidth" value="Add new Post"></div>
+                                    class="button is-primary is-outlined is-fullwidth" value="Add new Post">
+                            </div>
                         </div>
                     </div>
                 </div>
