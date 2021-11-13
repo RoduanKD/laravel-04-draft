@@ -10623,7 +10623,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 .btn.btn-sm,
 .btn-group-sm>.btn,
 .btn-group-sm .btn {
-  padding: 0.40625rem 1.25rem;
+  padding: 0.40625rem .5rem;
   font-size: 0.6875rem;
   line-height: 1.5;
   border-radius: 0.2rem;
@@ -13060,7 +13060,10 @@ fieldset[disabled] .form-group .form-control {
   border-radius: 3px;
   line-height: 20px;
 }
-
+.image{
+    max-width : 200px;
+    max-height : 250px;
+}
 .navbar .navbar-nav .nav-item .nav-link:not(.btn-just-icon) .fa {
   position: relative;
   top: 2px;

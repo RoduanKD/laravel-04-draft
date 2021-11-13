@@ -26,7 +26,17 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
+        // I guess $user will give u nothing by th way because it's creating an empty user object for u
+        // ur mistake is that u didn't use auth()->user()
+        // let's check if I'm right or no
         auth()->user()->update($request->all());
+
+        if ($request->image) {
+            auth()->user()->clearMediaCollection();
+            auth()->user()->addMediaFromRequest('image')->toMediaCollection();
+        }
+
+        // dd($request->all(), auth()->user(), auth()->user()->getFirstMediaUrl());
 
         return back()->withStatus(__('Profile successfully updated.'));
     }

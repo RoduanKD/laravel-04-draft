@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -72,7 +73,6 @@ class PostController extends Controller
             'tags'          => 'required|array|min:1|max:5',
             'tags.*'        => 'required|numeric|exists:tags,id',
         ]);
-        // $request->dd();
         $validation['featured_image'] = $request->featured_image->store('public/images');
         $post = Post::create($validation);
 

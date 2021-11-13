@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 
 class PostController extends Controller
@@ -42,18 +43,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // \dd($request->all());
         $validation = $request->validate([
-            'title_en'     => 'required|min:3',
-            'title_ar'     => 'required|min:3',
-            'content_en'   => 'required',
-            'content_ar'   => 'required',
-            'featured_image'    => 'required|file|image',
-            'category_id'   => 'required|numeric|exists:categories,id',
-            'tags'          => 'required|array|min:1|max:5',
-            'tags.*'        => 'required|numeric|exists:tags,id',
+                'title_en'     => 'required|min:3',
+                'title_ar'     => 'required|min:3',
+                'content_en'   => 'required',
+                'content_ar'   => 'required',
+                'featured_image'    => 'required|file|image',
+                'category_id'   => 'required|numeric|exists:categories,id',
+                'tags'          => 'required|array|min:1|max:5',
+                'tags.*'        => 'required|numeric|exists:tags,id',
         ]);
-        // $request->dd();
         $validation['featured_image'] = $request->featured_image->store('public/images');
+        $validation['user_id'] = Auth::user()->id;
         $validation['content_en'] = Purify::clean($request->content_en);
         $post = Post::create($validation);
 

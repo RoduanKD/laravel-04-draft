@@ -18,6 +18,8 @@ class Post extends Model
         'content_ar',
         'featured_image',
         'category_id',
+        'user_id',
+
     ];
 
     public function category()
@@ -58,5 +60,10 @@ class Post extends Model
     public function getContentAttribute()
     {
         return config('app.locale') == 'en' ? $this->content_en : $this->content_ar;
+    }
+
+    // relationship with users :
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
