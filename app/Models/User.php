@@ -41,4 +41,17 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('avatar')
+            ->useFallbackUrl('https://ui-avatars.com/api/?background=random&size=128&color=ffffff&name=' . $this->name)
+            ->singleFile();
+    }
 }
