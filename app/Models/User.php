@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -41,4 +43,17 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('avatar')
+            ->useFallbackUrl('https://ui-avatars.com/api/?background=random&size=128&color=fff&name=' . $this->name)
+            ->singleFile();
+    }
 }

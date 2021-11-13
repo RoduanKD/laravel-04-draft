@@ -151,12 +151,6 @@
                                         <div class="form-group{{ $errors->has('content_en') ? ' has-danger' : '' }}">
                                             <textarea id="summernote" placeholder="{{ __('English Content') }}"
                                                 name="content_en">{{ old('content_en') }}</textarea>
-                                            {{-- <textarea
-
-                                                class="form-control{{ $errors->has('content_en') ? ' is-invalid' : '' }}"
-                                                name="content_en" id="input-content_en"
-                                                placeholder="{{ __('English Content') }}"
-                                                required>{{ old('content_en') }}</textarea> --}}
                                             @if ($errors->has('content_en'))
                                                 <span id="content_en-error" class="error text-danger"
                                                     for="input-content_en">{{ $errors->first('content_en') }}</span>
@@ -164,6 +158,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             </div>
                             <div class="card-footer ml-auto mr-auto">
                                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
