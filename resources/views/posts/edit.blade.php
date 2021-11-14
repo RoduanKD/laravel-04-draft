@@ -30,7 +30,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div class="column is-12">
                                 <div class="field">
                                     <label class="label">Content</label>

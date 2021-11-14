@@ -1,6 +1,6 @@
-@extends('layouts.public')
+@extends('layouts.app')
 
-@section('title', "- {$tag->name}")
+@section('title', '- Home Page')
 
 @section('content')
     <section class="section">
@@ -18,10 +18,10 @@
                     </form>
                 </div>
             </div>
-            <hr>
-            <div class="columns is-multiline">
-                @each('partials.post', $tag->posts, 'post')
-            </div>
+        </div>
+        <hr>
+        <div class="columns is-multiline">
+            @each('partials.post', $tag->posts, 'post')
         </div>
     </section>
 @endsection

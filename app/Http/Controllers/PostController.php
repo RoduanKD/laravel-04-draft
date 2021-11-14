@@ -72,7 +72,6 @@ class PostController extends Controller
             'tags'          => 'required|array|min:1|max:5',
             'tags.*'        => 'required|numeric|exists:tags,id',
         ]);
-        // $request->dd();
         $validation['featured_image'] = $request->featured_image->store('public/images');
         $post = Post::create($validation);
 

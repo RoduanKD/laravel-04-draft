@@ -3,15 +3,16 @@
 @section('title', '- Home Page')
 
 @section('content')
-    <section class="hero is-info is-halfheight">
-        <div class="hero-body">
+    <section class="hero is-info is-halfheight ">
+        <div class="hero-body position-relative">
+            <img class="hero-image" src="{{ asset($setting->getFirstMediaUrl('setting')) }}" alt="">
             <div class="container">
                 <div class="">
                     <p class="title">
-                        Half height hero
+                        {{ $setting->title }}
                     </p>
                     <p class="subtitle">
-                        Half height subtitle
+                        {{ $setting->content }}
                     </p>
                 </div>
             </div>
