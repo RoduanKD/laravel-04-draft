@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'messages', 'titlePage' => __('Messages')])
+@extends('layouts.app', ['activePage' => 'messages', 'titlePage' => 'Messages'])
 
 @section('content')
     <div class="content">
@@ -65,8 +65,8 @@
                                         <div class="input-group">
                                             <textarea disabled name="content" class="form-control"
                                                 aria-label="With textarea">
-                                                                {{ $message->content }}
-                                                            </textarea>
+                                                                    {{ $message->content }}
+                                                                </textarea>
                                         </div>
                                     </div>
                                 </div>
