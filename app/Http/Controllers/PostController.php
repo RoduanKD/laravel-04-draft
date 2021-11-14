@@ -82,6 +82,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('update-post', $post);
         return view('posts.edit', ['post' => $post]);
     }
 
@@ -101,6 +102,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         $post->delete();
 
         return redirect()->route('posts.index');
