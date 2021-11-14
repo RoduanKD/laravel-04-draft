@@ -17,6 +17,23 @@
             </div>
         </div>
     </section>
+    <br>
+    <div class="container is-max-desktop">
+        <div class="notification is-primary">
+            <section class="section">
+                <div class="container">
+                    <h3 class="title">My Latest Projects</h3>
+                    <div class="columns is-multiline">
+                        @each('partials.project', $projects, 'project')
+                        <div class="column is-12">
+                            {{ $projects->links() }}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <hr>
     <section class="section">
         <div class="container">
             <h3 class="title">My Latest Posts</h3>
@@ -28,4 +45,7 @@
             </div>
         </div>
     </section>
+
+
+
 @endsection

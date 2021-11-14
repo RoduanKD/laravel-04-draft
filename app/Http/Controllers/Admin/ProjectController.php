@@ -41,8 +41,10 @@ class ProjectController extends Controller
             'name_ar'        => 'required|min:5',
             'name_en'        => 'required|min:5',
             'descreption_ar' => 'required|min:5',
-             'descreption_en' => 'required|min:5',
+             'descreption_en'=> 'required|min:5',
+             'images'        =>  'required|file|image',
         ]);
+        $validation['images'] = $request->images->store('public/images');
         $project = Project::create($validation);
         return redirect()->route('admin.projects.index');
 
@@ -83,7 +85,8 @@ class ProjectController extends Controller
             'name_ar'        => 'required|min:5',
             'name_en'        => 'required|min:5',
             'descreption_ar' => 'required|min:5',
-             'descreption_en' => 'required|min:5',
+             'descreption_en'=> 'required|min:5',
+             'images'        =>  'required|file|image',
         ]);
         $project->update($validation);
         return redirect()->route('admin.projects.index');

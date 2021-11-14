@@ -45,8 +45,11 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Arabic Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name_ar') ? ' has-danger' : '' }}">
-                                            <input type="text" class="form-control " placeholder="Arabic Name" value="{{ $project->name }}">
-
+                                            <textarea
+                                                class="form-control{{ $errors->has('name_ar') ? ' is-invalid' : '' }}"
+                                                name="name_ar" id="input-name_ar"
+                                                placeholder="{{ __('Arabic name') }}"
+                                                required>>{{ $project->name_ar }}</textarea>
                                             @if ($errors->has('name_ar'))
                                                 <span id="name_ar-error" class="error text-danger"
                                                     for="input-name_ar">{{ $errors->first('name_ar') }}</span>
@@ -54,28 +57,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="row">
+                                <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Englihs Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name_en') ? ' has-danger' : '' }}">
                                             <textarea
                                                 class="form-control{{ $errors->has('name_en') ? ' is-invalid' : '' }}"
                                                 name="name_en" id="input-name_en"
-                                                placeholder="{{ __('Englihs Name') }}" value="{{ $project->name }}"
-                                                required >{{ old('name_en') }}</textarea>
-                                            @if ($errors->has('name_en'))
-                                                <span id="name_en-error" class="error text-danger"
-                                                    for="input-name_en">{{ $errors->first('name_ar') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div> --}}
-
-                                <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Englihs Name') }}</label>
-                                    <div class="col-sm-7">
-                                        <div class="form-group{{ $errors->has('name_en') ? ' has-danger' : '' }}">
-                                            <input type="text" class="form-control " placeholder="English Name" value="{{ $project->name }}">
+                                                placeholder="{{ __('Englihs Name') }}"
+                                                required>{{ $project->name_en }}</textarea>
                                             @if ($errors->has('name_en'))
                                                 <span id="name_en-error" class="error text-danger"
                                                     for="input-name_en">{{ $errors->first('name_ar') }}</span>
@@ -83,6 +73,21 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
+                                    <div class="col-sm-7">
+                                        <div
+                                            class="{{ $errors->has('images') ? ' has-danger' : '' }} form-file-upload form-file-simple">
+                                            <input type="file" class="form-control" name="images">
+                                            @if ($errors->has('images'))
+                                                <span id="images-error" class="error text-danger"
+                                                    for="input-images">{{ $errors->first('images') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Arabic Descreption') }}</label>
@@ -92,7 +97,7 @@
                                                 class="form-control{{ $errors->has('descreption_ar') ? ' is-invalid' : '' }}"
                                                 name="descreption_ar" id="input-descreption_ar"
                                                 placeholder="{{ __('Arabic Descreption') }}"
-                                                required>{{ old('descreption_ar') }}</textarea>
+                                                required>{{ $project->descreption_ar }}</textarea>
                                             @if ($errors->has('descreption_ar'))
                                                 <span id="descreption_ar-error" class="error text-danger"
                                                     for="input-descreption_ar">{{ $errors->first('descreption_ar') }}</span>
@@ -105,7 +110,7 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('descreption_en') ? ' has-danger' : '' }}">
                                             <textarea id="summernote" placeholder="{{ __('English Descreption') }}"
-                                                name="descreption_en">{{ old('descreption_en') }}</textarea>
+                                                name="descreption_en">{{ $project->descreption_en }}</textarea>
 
                                             @if ($errors->has('descreption_en'))
                                                 <span id="descreption_en-error" class="error text-danger"

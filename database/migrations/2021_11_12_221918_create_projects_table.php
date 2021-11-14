@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string('descreption_ar');
             $table->string('name_en');
             $table->string('descreption_en');
+            $table->text('images');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -26,15 +26,14 @@
                                             <th>
                                                 Name Arabic
                                             </th>
+
                                             <th>
                                                 Descreption Arabic
                                             </th>
                                             <th>
                                                 Descreption English
                                             </th>
-                                            <th>
-                                                Creation date
-                                            </th>
+
                                             <th class="text-right">
                                                 Actions
                                             </th>
@@ -51,16 +50,13 @@
                                                 <td>
                                                     {{ $project->name_ar }}
                                                 </td>
+                                                <td>
+                                                    {!! $project->descreption_ar !!}
+                                                </td>
+                                                <td>
+                                                    {!! $project->descreption_en !!}
+                                                </td>
 
-                                                <td>
-                                                    {{ $project->descreption_ar }}
-                                                </td>
-                                                <td>
-                                                    {{ $project->descreption_en }}
-                                                </td>
-                                                <td>
-                                                    {{ $project->created_at }}
-                                                </td>
                                                 <td class="td-actions text-right">
                                                     <form action="{{ route('admin.projects.destroy', $project) }}"
                                                         method="post">

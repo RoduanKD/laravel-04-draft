@@ -74,6 +74,20 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
+                                    <div class="col-sm-7">
+                                        <div
+                                            class="{{ $errors->has('images') ? ' has-danger' : '' }} form-file-upload form-file-simple">
+                                            <input type="file" class="form-control" name="images">
+                                            @if ($errors->has('images'))
+                                                <span id="images-error" class="error text-danger"
+                                                    for="input-images">{{ $errors->first('images') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Arabic Descreption') }}</label>
