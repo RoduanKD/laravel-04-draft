@@ -71,33 +71,13 @@ Auth::routes(['register' => false, 'verify' => true]);
 
 // to be removed
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('table-list', function () {
-        return view('pages.table_list');
-    })->name('table');
-
-    Route::get('typography', function () {
-        return view('pages.typography');
-    })->name('typography');
-
-    Route::get('icons', function () {
-        return view('pages.icons');
-    })->name('icons');
-
-    Route::get('map', function () {
-        return view('pages.map');
-    })->name('map');
-
-    Route::get('notifications', function () {
-        return view('pages.notifications');
-    })->name('notifications');
-
-    Route::get('rtl-support', function () {
-        return view('pages.language');
-    })->name('language');
-
-    Route::get('upgrade', function () {
-        return view('pages.upgrade');
-    })->name('upgrade');
+    Route::view('table-list', 'pages.table_list');
+    Route::view('typography', 'pages.typography');
+    Route::view('icons', 'pages.icons');
+    Route::view('map', 'pages.map');
+    Route::view('notifications', 'pages.notifications');
+    Route::view('rtl-support', 'pages.language');
+    Route::view('upgrade', 'pages.upgrade');
 });
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
