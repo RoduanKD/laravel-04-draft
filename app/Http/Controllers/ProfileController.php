@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -26,10 +27,10 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-        auth()->user()->update($request->all());
+        Auth::user()->update($request->all());
 
         if ($request->image) {
-            auth()->user()->addMediaFromRequest('image')->toMediaCollection('avatar');
+            Auth::user()->addMediaFromRequest('image')->toMediaCollection('avatar');
         }
 
         return back()->withStatus(__('Profile successfully updated.'));
@@ -43,7 +44,7 @@ class ProfileController extends Controller
      */
     public function password(PasswordRequest $request)
     {
-        auth()->user()->update(['password' => Hash::make($request->get('password'))]);
+        Auth::user()->update(['password' => Hash::make($request->get('password'))]);
 
         return back()->withStatusPassword(__('Password successfully updated.'));
     }
