@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\SettingController;
@@ -48,8 +49,8 @@ Route::get('/contact', [MessageController::class, 'create'])->name('contact');
 Route::resource('messages', MessageController::class)->only('store');
 Route::resource('posts', PostController::class);
 Route::resource('posts.comments', PostCommentController::class)->shallow()->except(['index', 'create', 'show']);
+Route::resource('categories', CategoryController::class);
 Route::resource('tags', TagController::class);
-Route::resource('tags', CategoryController::class);
 
 Route::get('lang/{locale}', function ($locale) {
     // config(['app.locale' => $locale]);
@@ -102,4 +103,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::resource('categories', AdminCategoryController::class);
     Route::resource('tags', AdminTagController::class);
     Route::resource('settings', SettingController::class);
+    Route::resource('users', AdminController::class);
 });

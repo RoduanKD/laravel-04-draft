@@ -19,8 +19,9 @@
                         <p class="subtitle is-6">
                             {{ $post->user->name }}
                             -
-                            <a
-                                href="{{ route('categories.show', $post->category) }}">{{ $post->category->name }}</a>
+                            @isset($post->category)
+                            <a href="{{ route('categories.show', $post->category) }}">{{ $post->category->name }}</a>
+                            @endisset
                         </p>
                     </div>
                 </div>

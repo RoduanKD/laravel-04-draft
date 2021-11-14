@@ -72,6 +72,32 @@
                     <p>{{ __('Notifications') }}</p>
                 </a>
             </li>
+
+            <li class="nav-item {{$activePage == 'users' ? ' active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="true">
+                    <i><i class="material-icons">persons</i></i>
+                    <p>{{ __('Users') }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse show" id="users">
+                    <ul class="nav">
+                        <li class="nav-item{{ $activePage == 'users' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.users.index') }}">
+                                <i class="material-icons">persons</i>
+                                <p>{{ __('Users') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item{{ $activePage == 'category-create' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.users.create') }}">
+                                <i class="material-icons">add</i>
+                                <p>{{ __('Add New Category') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             <li class="nav-item {{$activePage == 'posts' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#posts" aria-expanded="true">
                     <i><i class="material-icons">description</i></i>
