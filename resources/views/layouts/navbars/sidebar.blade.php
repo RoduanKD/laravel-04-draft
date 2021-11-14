@@ -156,6 +156,12 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item{{ $activePage == 'Messages' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.messages.index') }}">
+                    <i class="material-icons">description</i>
+                    <p>{{ __('Message') }}</p>
+                 </a>
+            </li>
             <li class="nav-item{{ $activePage == 'settings' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.settings.create') }}">
                     <i class="material-icons">settings</i>

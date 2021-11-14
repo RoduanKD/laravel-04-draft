@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\MessageController as AdminMessageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TagController as AdminTagController;
 use App\Http\Controllers\CategoryController;
@@ -40,10 +41,9 @@ Route::get('/', function () {
         'posts'     => $posts,
         'setting'   => $setting
     ]);
-
 })->name('welcome');
 
-
+Route::view('/about', 'pages.about');
 Route::get('/contact', [MessageController::class, 'create'])->name('contact');
 Route::resource('messages', MessageController::class)->only('store');
 Route::resource('posts', PostController::class);
@@ -101,5 +101,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::resource('posts', AdminPostController::class);
     Route::resource('categories', AdminCategoryController::class);
     Route::resource('tags', AdminTagController::class);
+    Route::resource('messages', AdminMessageController::class);
     Route::resource('settings', SettingController::class);
 });
