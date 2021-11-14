@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Footer;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::defaultView('pagination-bulma::bulma');
         Paginator::defaultSimpleView('pagination-bulma::bulma-simple');
+
+        View::share('footer', Footer::all());
+
     }
 }

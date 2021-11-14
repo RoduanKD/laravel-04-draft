@@ -72,24 +72,34 @@
                     <p>{{ __('Notifications') }}</p>
                 </a>
             </li>
+
+
             <li class="nav-item{{ $activePage == 'posts' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.posts.index') }}">
                     <i class="material-icons">description</i>
                     <p>{{ __('Posts') }}</p>
                 </a>
             </li>
+
+            <li class="nav-item{{ $activePage == 'Footer Management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.footers.index') }}">
+                    <i class="material-icons">description</i>
+                    <p>{{ __('Footer Management') }}</p>
+                </a>
+            </li>
+
             <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('language') }}">
                     <i class="material-icons">language</i>
                     <p>{{ __('RTL Support') }}</p>
                 </a>
             </li>
-            <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
+            {{-- <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
                 <a class="nav-link text-white bg-danger" href="{{ route('upgrade') }}">
                     <i class="material-icons text-white">unarchive</i>
                     <p>{{ __('Upgrade to PRO') }}</p>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>

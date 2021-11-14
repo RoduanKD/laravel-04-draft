@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
@@ -9,7 +10,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Models\Post;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,20 +22,17 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
-    $skills = ['swimming', 'shooting', 'horse riding'];
-    $picture = '/images/profile.png';
 
     $posts = Post::latest()->paginate(6);
     // $posts = Post::all();
 
     // dd($posts);
 
-    return view('welcome', ['skills' => $skills, 'image' => $picture, 'posts' => $posts]);
+    return view('welcome', ['posts' => $posts]);
 })->name('welcome');
-
 
 Route::get('/contact', [MessageController::class, 'create'])->name('contact');
 Route::resource('messages', MessageController::class)->only('store');
@@ -50,9 +47,10 @@ Route::get('lang/{locale}', function ($locale) {
     session(['locale' => $locale]);
     return redirect()->route('welcome');
     // dd(config('app.locale'), session('locale', 'en'));
-})->name('changeLocale')/*->middleware('password.confirm')*/;
+})->name('changeLocale') /*->middleware('password.confirm')*/;
 
-Auth::routes(['register' => false, 'verify' => true]);
+//allowing to have sign up page by setting register to true
+Auth::routes(['register' => true, 'verify' => true]);
 
 // to be removed
 Route::group(['middleware' => 'auth'], function () {
@@ -92,4 +90,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::resource('posts', AdminPostController::class);
+    Route::resource('footers', FooterController::class);
 });
