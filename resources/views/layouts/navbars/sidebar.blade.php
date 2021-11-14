@@ -78,11 +78,17 @@
                     <p>{{ __('Posts') }}</p>
                 </a>
             </li>
+            <li class="nav-item{{ $activePage == 'projects' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.projects.index') }}">
+                    <i class="material-icons">work</i>
+                    <p>{{ __('projects') }}</p>
+                </a>
+            </li>
             <li class="nav-item{{ $activePage == 'Messages' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.messages.index') }}">
                     <i class="material-icons">description</i>
                     <p>{{ __('Message') }}</p>
-                 </a>
+                </a>
             </li>
             <li class="nav-item{{ $activePage == 'settings' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.settings.create') }}">
