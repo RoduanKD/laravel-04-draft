@@ -19,7 +19,8 @@
                 </a>
             </li>
             <li class="nav-item {{ $activePage == 'profile' || $activePage == 'user-management' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#laravelExample"
+                    aria-expanded="{{ $activePage == 'profile' || $activePage == 'user-management' ? 'true' : 'false' }}">
                     <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
                     <p>{{ __('Laravel Examples') }}
                         <b class="caret"></b>
@@ -74,7 +75,8 @@
                 </a>
             </li> --}}
             <li class="nav-item {{ $activePage == 'posts' || $activePage == 'post-create' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#posts" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#posts"
+                    aria-expanded="{{ $activePage == 'posts' || $activePage == 'post-create' ? 'true' : 'false' }}">
                     <i><i class="material-icons">description</i></i>
                     <p>{{ __('Posts') }}
                         <b class="caret"></b>
@@ -99,7 +101,8 @@
                 </div>
             </li>
             <li class="nav-item {{ $activePage == 'tags' || $activePage == 'tag-create' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#tags" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#tags"
+                    aria-expanded="{{ $activePage == 'tags' || $activePage == 'tag-create' ? 'true' : 'false' }}">
                     <i><i class="material-icons">tags</i></i>
                     <p>{{ __('Tags') }}
                         <b class="caret"></b>
@@ -131,7 +134,8 @@
             </li> --}}
             <li
                 class="nav-item {{ $activePage == 'categories' || $activePage == 'category-create' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#categories" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#categories" aria-expan$activePage=='categories'
+                    || $activePage=='category-create' ? 'true' : 'false' }}">
                     <i><i class="material-icons">class</i></i>
                     <p>{{ __('Categories') }}
                         <b class="caret"></b>
