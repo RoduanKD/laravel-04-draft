@@ -10,7 +10,7 @@
                         @csrf
                         <div class="card ">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">{{ __('Settings Page') }}</h4>
+                                <h4 class="card-title">{{ __('Hero Settings') }}</h4>
                             </div>
                             <div class="card-body ">
                                 @if (session('status'))
@@ -29,33 +29,31 @@
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('New Hero Title') }}</label>
                                     <div class="col-sm-7">
-                                        <div class="form-group{{ $errors->has('title') ? ' has-danger' : '' }}">
-                                            <input  class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}"
-                                                    name="title"
-                                                    id="input-title-ar" type="text"
-                                                    placeholder="{{ __('Title') }}"
-                                                    value="{{ old('title') }}"
-                                                    required="true"
-                                                    aria-required="true" />
-                                            @if ($errors->has('title'))
+                                        <div class="form-group{{ $errors->has('hero_title') ? ' has-danger' : '' }}">
+                                            <input
+                                                class="form-control{{ $errors->has('hero_title') ? ' is-invalid' : '' }}"
+                                                name="hero_title" id="input-title-ar" type="text"
+                                                placeholder="{{ __('Title') }}"
+                                                value="{{ old('hero_title', $settings->firstWhere('title', 'hero_title')->content) }}" />
+                                            @if ($errors->has('hero_title'))
                                                 <span id="title-ar-error" class="error text-danger"
-                                                    for="input-title-ar">{{ $errors->first('title') }}</span>
+                                                    for="input-title-ar">{{ $errors->first('hero_title') }}</span>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('New Hero Content') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('New Hero Title') }}</label>
                                     <div class="col-sm-7">
-                                        <div class="form-group{{ $errors->has('content') ? ' has-danger' : '' }}">
-                                            <textarea
-                                                class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
-                                                name="content" id="input-content"
-                                                placeholder="{{ __('Content') }}"
-                                                required>{{ old('content') }}</textarea>
-                                            @if ($errors->has('content'))
-                                                <span id="content-error" class="error text-danger"
-                                                    for="input-content">{{ $errors->first('content') }}</span>
+                                        <div class="form-group{{ $errors->has('hero_subtitle') ? ' has-danger' : '' }}">
+                                            <input
+                                                class="form-control{{ $errors->has('hero_subtitle') ? ' is-invalid' : '' }}"
+                                                name="hero_subtitle" id="input-title-ar" type="text"
+                                                placeholder="{{ __('Title') }}"
+                                                value="{{ old('hero_subtitle', $settings->firstWhere('title', 'hero_subtitle')->content) }}" />
+                                            @if ($errors->has('hero_subtitle'))
+                                                <span id="title-ar-error" class="error text-danger"
+                                                    for="input-title-ar">{{ $errors->first('hero_subtitle') }}</span>
                                             @endif
                                         </div>
                                     </div>
@@ -64,12 +62,12 @@
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Change Hero image') }}</label>
                                     <div class="col-sm-7">
-                                        <div class="{{ $errors->has('image') ? ' has-danger' : '' }}">
-                                            <input class="{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image"
-                                                type="file" required />
-                                            @if ($errors->has('image'))
+                                        <div class="{{ $errors->has('hero_image') ? ' has-danger' : '' }}">
+                                            <input class="{{ $errors->has('hero_image') ? ' is-invalid' : '' }}"
+                                                name="hero_image" type="file" />
+                                            @if ($errors->has('hero_image'))
                                                 <span id="image-error" class="error text-danger"
-                                                    for="input-image">{{ $errors->first('image') }}</span>
+                                                    for="input-image">{{ $errors->first('hero_image') }}</span>
                                             @endif
                                         </div>
                                     </div>

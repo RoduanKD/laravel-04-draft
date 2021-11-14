@@ -38,13 +38,10 @@ Route::get('/', function () {
     $posts = Post::latest()->paginate(6);
     $projects = Project::latest()->paginate(6);
     // $posts = Post::all();
-
-    $setting = Setting::all()->last();
     return view('welcome', [
         'skills'    => $skills,
         'image'     => $picture,
         'posts'     => $posts,
-        'setting'   => $setting,
         'projects'  => $projects
     ]);
 })->name('welcome');

@@ -24,8 +24,9 @@ class SettingsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => 'required|min:5',
-            'content'   => 'required|min:10',
+            'hero_title'    => 'min:5',
+            'hero_subtitle' => 'min:10',
+            'hero_image'    => 'min:10',
         ];
     }
 }

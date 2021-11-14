@@ -5,14 +5,14 @@
 @section('content')
     <section class="hero is-info is-halfheight ">
         <div class="hero-body position-relative">
-            <img class="hero-image" src="{{ asset($setting->getFirstMediaUrl('setting')) }}" alt="">
+            <img class="hero-image" src="{{ $settings->firstWhere('title', 'hero_image')->content }}" alt="">
             <div class="container">
                 <div class="">
                     <p class="title">
-                        {{ $setting->title }}
+                        {{ $settings->firstWhere('title', 'hero_title')->content }}
                     </p>
                     <p class="subtitle">
-                        {{ $setting->content }}
+                        {{ $settings->firstWhere('title', 'hero_subtitle')->content }}
                     </p>
                 </div>
             </div>
