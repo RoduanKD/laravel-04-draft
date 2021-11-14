@@ -47,8 +47,7 @@
                                         <div class="form-group{{ $errors->has('name_ar') ? ' has-danger' : '' }}">
                                             <textarea
                                                 class="form-control{{ $errors->has('name_ar') ? ' is-invalid' : '' }}"
-                                                name="name_ar" id="input-name_ar"
-                                                placeholder="{{ __('Arabic name') }}"
+                                                name="name_ar" id="input-name_ar" placeholder="{{ __('Arabic name') }}"
                                                 required>>{{ $project->name_ar }}</textarea>
                                             @if ($errors->has('name_ar'))
                                                 <span id="name_ar-error" class="error text-danger"
@@ -58,13 +57,12 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Englihs Name') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('English Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name_en') ? ' has-danger' : '' }}">
                                             <textarea
                                                 class="form-control{{ $errors->has('name_en') ? ' is-invalid' : '' }}"
-                                                name="name_en" id="input-name_en"
-                                                placeholder="{{ __('Englihs Name') }}"
+                                                name="name_en" id="input-name_en" placeholder="{{ __('English Name') }}"
                                                 required>{{ $project->name_en }}</textarea>
                                             @if ($errors->has('name_en'))
                                                 <span id="name_en-error" class="error text-danger"

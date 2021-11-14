@@ -45,30 +45,29 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Arabic Title') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('title_ar') ? ' has-danger' : '' }}">
-                                            <textarea
-                                                class="form-control{{ $errors->has('title_ar') ? ' is-invalid' : '' }}"
-                                                name="title_ar" id="input-title_ar"
-                                                placeholder="{{ __('Arabic Title') }}"
-                                                required>{{ old('title_ar') }}</textarea>
+                                            <input class="form-control{{ $errors->has('title_ar') ? ' is-invalid' : '' }}"
+                                                name="title_ar" id="input-title-ar" type="text"
+                                                placeholder="{{ __('Arabic Title') }}" value="{{ old('title_ar') }}"
+                                                required="true" aria-required="true" />
                                             @if ($errors->has('title_ar'))
-                                                <span id="title_ar-error" class="error text-danger"
-                                                    for="input-title_ar">{{ $errors->first('title_ar') }}</span>
+                                                <span id="title-ar-error" class="error text-danger"
+                                                    for="input-title-ar">{{ $errors->first('title_ar') }}</span>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Englihs Title') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('English Title') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('title_en') ? ' has-danger' : '' }}">
-                                            <textarea
+                                            <input
                                                 class="form-control{{ $errors->has('title_en') ? ' is-invalid' : '' }}"
-                                                name="title_en" id="input-title_en"
-                                                placeholder="{{ __('Englihs Title') }}"
-                                                required>{{ old('title_en') }}</textarea>
+                                                name="title_en" id="input-title-ar" type="text"
+                                                placeholder="{{ __('English Title') }}" value="{{ old('title_en') }}"
+                                                required="true" aria-required="true" />
                                             @if ($errors->has('title_en'))
-                                                <span id="title_en-error" class="error text-danger"
-                                                    for="input-title_en">{{ $errors->first('title_ar') }}</span>
+                                                <span id="title-ar-error" class="error text-danger"
+                                                    for="input-title-ar">{{ $errors->first('title_en') }}</span>
                                             @endif
                                         </div>
                                     </div>

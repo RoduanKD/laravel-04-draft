@@ -15,10 +15,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::latest();
-       $projects = $projects->paginate(6);
-      //  $projects = Project::all();
-        return view('projects.index',['projects'=>$projects]);
+        $projects = Project::latest()->paginate(6);
+
+        return view('projects.index', ['projects' => $projects]);
     }
 
     /**

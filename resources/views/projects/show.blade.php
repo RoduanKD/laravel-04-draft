@@ -5,7 +5,6 @@
 @section('content')
     <section class="section">
         <div class="container">
-
             <div class="columns">
                 <div class="column is-5">
                     <div class="card">
@@ -16,29 +15,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="column is-1">
-
-                </div>
+                <div class="column is-1"></div>
                 <div class="column is-5">
-
-                    {{-- <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="\img\R.jfif" alt="Placeholder image">
-                            </figure>
-                            <p class="title is-3">
-                                < About Project>
-                            </p>
-                            <p class="title is-5">
-                                {{ app()->getLocale() == 'en' ? $project->name_en : $project->name_ar }}
-                            </p>
-                            <p class="title is-5">
-                                {!! app()->getLocale() == 'en' ? $project->descreption_en : $project->descreption_ar !!}
-                            </p>
-                        </div>
-
-                    </div> --}}
-
                     <div class="card">
 
                         <header class="card-header">
@@ -60,9 +38,9 @@
 
                         <footer class="card-footer">
                             <p class="card-footer-item">
-                             {{$project->created_at}}
+                                {{ $project->created_at }}
                             </p>
-                          </footer>
+                        </footer>
                     </div>
                 </div>
 

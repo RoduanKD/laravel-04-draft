@@ -47,8 +47,7 @@
                                         <div class="form-group{{ $errors->has('name_ar') ? ' has-danger' : '' }}">
                                             <textarea
                                                 class="form-control{{ $errors->has('name_ar') ? ' is-invalid' : '' }}"
-                                                name="name_ar" id="input-name_ar"
-                                                placeholder="{{ __('Arabic name') }}"
+                                                name="name_ar" id="input-name_ar" placeholder="{{ __('Arabic name') }}"
                                                 required>{{ old('name_ar') }}</textarea>
                                             @if ($errors->has('name_ar'))
                                                 <span id="name_ar-error" class="error text-danger"
@@ -58,13 +57,12 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Englihs Name') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('English Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name_en') ? ' has-danger' : '' }}">
                                             <textarea
                                                 class="form-control{{ $errors->has('name_en') ? ' is-invalid' : '' }}"
-                                                name="name_en" id="input-name_en"
-                                                placeholder="{{ __('Englihs Name') }}"
+                                                name="name_en" id="input-name_en" placeholder="{{ __('English Name') }}"
                                                 required>{{ old('name_en') }}</textarea>
                                             @if ($errors->has('name_en'))
                                                 <span id="name_en-error" class="error text-danger"
@@ -78,11 +76,11 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
                                     <div class="col-sm-7">
                                         <div
-                                            class="{{ $errors->has('images') ? ' has-danger' : '' }} form-file-upload form-file-simple">
-                                            <input type="file" class="form-control" name="images">
-                                            @if ($errors->has('images'))
-                                                <span id="images-error" class="error text-danger"
-                                                    for="input-images">{{ $errors->first('images') }}</span>
+                                            class="{{ $errors->has('image') ? ' has-danger' : '' }} form-file-upload form-file-simple">
+                                            <input type="file" class="form-control" name="image">
+                                            @if ($errors->has('image'))
+                                                <span id="image-error" class="error text-danger"
+                                                    for="input-image">{{ $errors->first('image') }}</span>
                                             @endif
                                         </div>
                                     </div>

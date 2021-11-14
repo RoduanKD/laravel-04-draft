@@ -16,7 +16,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::paginate(10);
-        return view('admin.projects.index',['projects'=>$projects]);
+        return view('admin.projects.index', ['projects' => $projects]);
     }
 
     /**
@@ -26,7 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-       return view('admin.projects.create');
+        return view('admin.projects.create');
     }
 
     /**
@@ -41,13 +41,12 @@ class ProjectController extends Controller
             'name_ar'        => 'required|min:5',
             'name_en'        => 'required|min:5',
             'descreption_ar' => 'required|min:5',
-             'descreption_en'=> 'required|min:5',
-             'images'        =>  'required|file|image',
+            'descreption_en' => 'required|min:5',
+            'image'          =>  'required|file|image',
         ]);
-        $validation['images'] = $request->images->store('public/images');
+        $validation['image'] = $request->image->store('public/images');
         $project = Project::create($validation);
         return redirect()->route('admin.projects.index');
-
     }
 
     /**
@@ -58,7 +57,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.projects.show',['project'=>$project]);
+        return view('admin.projects.show', ['project' => $project]);
     }
 
     /**
@@ -69,7 +68,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit',['project'=> $project]);
+        return view('admin.projects.edit', ['project' => $project]);
     }
 
     /**
@@ -85,12 +84,12 @@ class ProjectController extends Controller
             'name_ar'        => 'required|min:5',
             'name_en'        => 'required|min:5',
             'descreption_ar' => 'required|min:5',
-             'descreption_en'=> 'required|min:5',
-             'images'        =>  'required|file|image',
+            'descreption_en' => 'required|min:5',
+            'image'          =>  'required|file|image',
         ]);
+        // image update is missing here
         $project->update($validation);
         return redirect()->route('admin.projects.index');
-
     }
 
     /**

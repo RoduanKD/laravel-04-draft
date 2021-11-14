@@ -10,11 +10,10 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'name_ar' , 'name_en' , 'descreption_ar' ,'descreption_en' , 'images'];
+    protected $fillable = ['name_ar', 'name_en', 'descreption_ar', 'descreption_en', 'image'];
 
-    public function getImagesAttribute($value)
+    public function getImageAttribute($value)
     {
         return $value ? Storage::url($value) : 'https://bulma.io/images/placeholders/1280x960.png';
     }
-
 }

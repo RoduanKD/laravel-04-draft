@@ -15,7 +15,7 @@
             </div>
             <div class="card-image">
                 <figure class="image is-4by3">
-                    <img src="{{ $project->images }}" alt="Placeholder image">
+                    <img src="{{ $project->image }}" alt="Placeholder image">
                 </figure>
             </div>
         </div>

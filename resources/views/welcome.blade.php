@@ -18,7 +18,6 @@
             </div>
         </div>
     </section>
-    <br>
     <div class="container is-max-desktop">
         <div class="notification is-primary">
             <section class="section">
@@ -46,7 +45,4 @@
             </div>
         </div>
     </section>
-
-
-
 @endsection
