@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,9 +31,9 @@ class AdminController extends Controller
         // dd($request->all());
         $user = User::create($request->all());
         if($user)
-            return redirect()->route('admin.users.index')->with(['success' => 'User Addedd Successfully']);
+            return redirect()->route('admin.users.index')->withStatus(__('User is successfully added.'));
         else
-            return redirect()->route('admin.users.index')->with(['error' => 'User Addedd Failed']);
+            return redirect()->route('admin.users.index')->withError(__('a mistake in the deletion process'));
     }
 
 
@@ -45,32 +46,35 @@ class AdminController extends Controller
 
     public function edit(User $user)
     {
-        return view('admin.users.form',['user'=> $user]);
+        return view('admin.users.edit',['user'=> $user]);
     }
 
 
 
-    public function update(UserRequest $request, User $user)
+    public function update(AdminRequest $request, User $user)
     {
 
-        if(! $request->password)
-            $user = $user->update($request->except('password'));
-        else
-            $user = $user->update($request->all());
+        $user->update($request->all());
+        return redirect()->route('admin.users.index')->withStatus(__('User is successfully updated.'));
 
-        if($user)
-            return redirect()->route('admin.users.index')->with(['success' => 'User Updated Successfully']);
-        else
-            return redirect()->route('admin.users.index')->with(['error' => 'User Updated Failed']);
+        // if(! $request->password)
+        //     $user = $user->update($request->except('password'));
+        // else
+        //     $user = $user->update($request->all());
+
+        // if($user)
+        //     return redirect()->route('admin.users.index')->with(['success' => 'User Updated Successfully']);
+        // else
+        //     return redirect()->route('admin.users.index')->with(['error' => 'User Updated Failed']);
     }
 
 
     public function destroy(User $user)
     {
         if ($user->delete())
-            return redirect()->route('admin.users.index')->with('success', 'User Deleted Successfully');
+            return redirect()->route('admin.users.index')->withStatus(__('User is successfully deleted.'));
         else
-            return redirect()->back()->with('error', 'User Deleted Failed');
+            return redirect()->route('admin.users.index')->withError(__('a mistake in the deletion process'));
     }
 
 }

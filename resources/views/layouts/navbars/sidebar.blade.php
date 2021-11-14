@@ -91,7 +91,7 @@
                         <li class="nav-item{{ $activePage == 'category-create' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.users.create') }}">
                                 <i class="material-icons">add</i>
-                                <p>{{ __('Add New Category') }}</p>
+                                <p>{{ __('Add New Admin') }}</p>
                             </a>
                         </li>
                     </ul>
@@ -122,12 +122,6 @@
                     </ul>
                 </div>
             </li>
-            {{-- <li class="nav-item{{ $activePage == 'posts' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.posts.index') }}">
-                    <i class="material-icons">description</i>
-                    <p>{{ __('Posts') }}</p>
-                </a>
-            </li> --}}
             <li class="nav-item {{$activePage == 'tags' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#tags" aria-expanded="true">
                     <i><i class="material-icons">tags</i></i>
@@ -152,12 +146,6 @@
                     </ul>
                 </div>
             </li>
-            {{-- <li class="nav-item{{ $activePage == 'tags' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.tags.index') }}">
-                    <i class="material-icons">tags</i>
-                    <p>{{ __('Tags') }}</p>
-                </a>
-            </li> --}}
             <li class="nav-item {{$activePage == 'categories' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#categories" aria-expanded="true">
                     <i><i class="material-icons">class</i></i>

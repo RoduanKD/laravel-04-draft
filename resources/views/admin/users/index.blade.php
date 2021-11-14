@@ -14,9 +14,22 @@
                             <div class="row">
                                 <div class="col-12 text-right">
                                     <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-primary">Add
-                                        Tag</a>
+                                        Admin</a>
                                 </div>
                             </div>
+                            @if (session('status'))
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="alert alert-success">
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                            <span>{{ session('status') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
@@ -51,7 +64,6 @@
                                                             <i class="material-icons">delete</i>
                                                             <div class="ripple-container"></div>
                                                         </button>
-
                                                     </form>
                                                 </td>
                                             </tr>
@@ -70,5 +82,4 @@
             </div>
         </div>
     </div>
-
 @endsection

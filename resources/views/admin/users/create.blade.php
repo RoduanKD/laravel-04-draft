@@ -5,8 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="{{ route('admin.users.store') }}" autocomplete="off"
-                        class="form-horizontal">
+                    <form method="post" action="{{ route('admin.users.store') }}" autocomplete="off" class="form-horizontal">
                         @csrf
                         <div class="card ">
                             <div class="card-header card-header-primary">
@@ -26,21 +25,27 @@
                                         </div>
                                     </div>
                                 @endif
+                                @if ($errors->any())
+                                    <div class="callout callout-danger">
+                                        <h5>
+                                            <i class="icon fas fa-ban " style="margin-right: 10px;color: #dd1616;"></i>Form Error
+                                        </h5>
+                                        <ul class="list-unstyled" style="margin-left: 1.9rem;">
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Username') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                            {{-- <input  class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                            <input type="text"
                                                     name="name"
-                                                    id="input-title-ar"
-                                                    type="text"
-                                                    placeholder="{{ __('Username') }}"
-                                                    value="{{ old('name') }}"
-                                                    required="true" aria-required="true" /> --}}
-                                            <input type="text" name="name"
-                                                class="form-control @error('name') is-invalid @enderror"
-                                                placeholder="Enter Username"
-                                                value="{{ old('name') ? old('name') : $user->name }}">
+                                                    class="form-control @error('name') is-invalid @enderror"
+                                                    placeholder="Enter Username"
+                                                    value="{{ old('name') ? old('name') : $user->name }}">
                                             @if ($errors->has('name'))
                                                 <span id="title-ar-error" class="error text-danger"
                                                     for="input-title-ar">{{ $errors->first('name') }}</span>
@@ -52,11 +57,8 @@
                                     <label class="col-sm-2 col-form-label">{{ __('E-mail') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                            {{-- <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                                name="email" id="input-title-ar" type="email"
-                                                placeholder="{{ __('E-mail') }}" value="{{ old('email') }}"
-                                                required="true" aria-required="true" /> --}}
-                                            <input type="email" name="email"
+                                            <input type="email"
+                                                name="email"
                                                 class="form-control @error('email') is-invalid @enderror"
                                                 placeholder="Enter E-mail"
                                                 value="{{ old('email') ? old('email') : $user->email }}">
@@ -71,14 +73,11 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Password') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                            {{-- <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                                name="password" id="input-title-ar" type="password"
-                                                placeholder="{{ __('Password') }}" value="{{ old('email') }}"
-                                                required="true" aria-required="true" /> --}}
-                                            <input type="password" name="password"
-                                                class="form-control @error('password') is-invalid @enderror"
-                                                placeholder="Enter Password"
-                                                value="{{ old('password') ? old('password') : $user->password }}">
+                                            <input  type="password"
+                                                    name="password"
+                                                    class="form-control @error('password') is-invalid @enderror"
+                                                    placeholder="Enter Password"
+                                                    value="{{ old('password') ? old('password') : $user->password }}">
                                             @if ($errors->has('email'))
                                                 <span id="title-ar-error" class="error text-danger"
                                                     for="input-title-ar">{{ $errors->first('email') }}</span>
@@ -91,14 +90,10 @@
                                     <div class="col-sm-7">
                                         <div
                                             class="form-group{{ $errors->has('confirm_password') ? ' has-danger' : '' }}">
-                                            {{-- <input
-                                                class="form-control{{ $errors->has('confirm_password') ? ' is-invalid' : '' }}"
-                                                name="confirm_password" id="input-title-ar" type="password"
-                                                placeholder="{{ __('Confirm Password') }}"
-                                                value="{{ old('confirm_password') }}" required="true"
-                                                aria-required="true" /> --}}
-                                                <input type="password" name="confirm_password" class="form-control @error('confirm_password') is-invalid @enderror"
-                                                placeholder="Enter confirm_password" value="{{ old('confirm_password') ? old('confirm_password') : $user->confirm_password }}">
+                                            <input  type="password" name="confirm_password"
+                                                    class="form-control @error('confirm_password') is-invalid @enderror"
+                                                    placeholder="Enter confirm_password"
+                                                    value="{{ old('confirm_password') ? old('confirm_password') : $user->confirm_password }}">
                                             @if ($errors->has('confirm_password'))
                                                 <span id="title-ar-error" class="error text-danger"
                                                     for="input-title-ar">{{ $errors->first('confirm_password') }}</span>
