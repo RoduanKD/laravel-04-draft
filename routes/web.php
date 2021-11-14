@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\MessageController as AdminMessageController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TagController as AdminTagController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PostCommentController;
@@ -15,7 +17,6 @@ use App\Http\Controllers\UserController;
 use App\Models\Post;
 use App\Models\Project;
 use App\Models\Setting;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,10 +44,9 @@ Route::get('/', function () {
         'skills'    => $skills,
         'image'     => $picture,
         'posts'     => $posts,
-        'setting'   => $setting
+        'setting'   => $setting,
+        'projects'  => $projects
     ]);
-
-    return view('welcome', ['skills' => $skills, 'image' => $picture, 'posts' => $posts, 'projects' => $projects]);
 })->name('welcome');
 
 Route::view('/about', 'pages.about');
@@ -107,6 +107,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::resource('posts', AdminPostController::class);
+    Route::resource('categories', AdminCategoryController::class);
+    Route::resource('tags', AdminTagController::class);
     Route::resource('projects', AdminProjectController::class);
     Route::resource('messages', AdminMessageController::class);
     Route::resource('settings', SettingController::class);

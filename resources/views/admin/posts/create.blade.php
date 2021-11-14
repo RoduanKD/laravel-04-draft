@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'posts', 'titlePage' => __('New Post')])
+@extends('layouts.app', ['activePage' => 'post-create', 'titlePage' => __('New Post')])
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">

@@ -72,11 +72,89 @@
                     <p>{{ __('Notifications') }}</p>
                 </a>
             </li>
-            <li class="nav-item{{ $activePage == 'posts' ? ' active' : '' }}">
+            <li class="nav-item {{ $activePage == 'posts' ? ' active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#posts" aria-expanded="true">
+                    <i><i class="material-icons">description</i></i>
+                    <p>{{ __('Posts') }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse show" id="posts">
+                    <ul class="nav">
+                        <li class="nav-item{{ $activePage == 'posts' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.posts.index') }}">
+                                <i class="material-icons">description</i>
+                                <p>{{ __('Posts') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item{{ $activePage == 'post-create' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.posts.create') }}">
+                                <i class="material-icons">add</i>
+                                <p>{{ __('Add New Post') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {{-- <li class="nav-item{{ $activePage == 'posts' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.posts.index') }}">
                     <i class="material-icons">description</i>
                     <p>{{ __('Posts') }}</p>
                 </a>
+            </li> --}}
+            <li class="nav-item {{ $activePage == 'tags' ? ' active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#tags" aria-expanded="true">
+                    <i><i class="material-icons">tags</i></i>
+                    <p>{{ __('Tags') }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse show" id="tags">
+                    <ul class="nav">
+                        <li class="nav-item{{ $activePage == 'tags' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.tags.index') }}">
+                                <i class="material-icons">tags</i>
+                                <p>{{ __('Tags') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item{{ $activePage == 'tag-create' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.tags.create') }}">
+                                <i class="material-icons">add</i>
+                                <p>{{ __('Add New Tag') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {{-- <li class="nav-item{{ $activePage == 'tags' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.tags.index') }}">
+                    <i class="material-icons">tags</i>
+                    <p>{{ __('Tags') }}</p>
+                </a>
+            </li> --}}
+            <li class="nav-item {{ $activePage == 'categories' ? ' active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#categories" aria-expanded="true">
+                    <i><i class="material-icons">class</i></i>
+                    <p>{{ __('Categories') }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse show" id="categories">
+                    <ul class="nav">
+                        <li class="nav-item{{ $activePage == 'categories' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.categories.index') }}">
+                                <i class="material-icons">class</i>
+                                <p>{{ __('Categories') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item{{ $activePage == 'category-create' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.categories.create') }}">
+                                <i class="material-icons">add</i>
+                                <p>{{ __('Add New Category') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <li class="nav-item{{ $activePage == 'projects' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.projects.index') }}">
@@ -92,7 +170,7 @@
             </li>
             <li class="nav-item{{ $activePage == 'settings' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.settings.create') }}">
-                    <i class="material-icons">description</i>
+                    <i class="material-icons">settings</i>
                     <p>{{ __('Settings') }}</p>
                 </a>
             </li>
