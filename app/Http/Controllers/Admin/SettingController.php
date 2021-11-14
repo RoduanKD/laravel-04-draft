@@ -24,7 +24,7 @@ class SettingController extends Controller
     }
 
 
-    public function store(SettingsRequest $request , Setting $setting)
+    public function store(SettingsRequest $request, Setting $setting)
     {
         $setting->title     = $request->title;
         $setting->content   = $request->content;

@@ -42,7 +42,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
+            {{-- <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('table') }}">
                     <i class="material-icons">content_paste</i>
                     <p>{{ __('Table List') }}</p>
@@ -71,7 +71,7 @@
                     <i class="material-icons">notifications</i>
                     <p>{{ __('Notifications') }}</p>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item {{ $activePage == 'posts' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#posts" aria-expanded="true">
                     <i><i class="material-icons">description</i></i>
@@ -169,7 +169,7 @@
                 </a>
             </li>
             <li class="nav-item{{ $activePage == 'settings' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.settings.create') }}">
+                <a class="nav-link" href="{{ route('admin.settings.index') }}">
                     <i class="material-icons">settings</i>
                     <p>{{ __('Settings') }}</p>
                 </a>
