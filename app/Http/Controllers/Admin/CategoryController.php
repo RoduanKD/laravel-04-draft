@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('name')->paginate(10,['id','name','created_at']);
+        $categories = Category::orderBy('name')->paginate(10, ['id', 'name', 'created_at']);
         return view('admin.categories.index', ['categories' => $categories]);
     }
 
@@ -30,7 +30,6 @@ class CategoryController extends Controller
         $category = Category::create($validated);
 
         return redirect()->route('admin.categories.index')->withStatus(__('Category is successfully updated.'));
-
     }
 
 
@@ -55,7 +54,6 @@ class CategoryController extends Controller
         $category->update($validated);
 
         return redirect()->route('admin.categories.index')->withStatus(__('Category is successfully updated.'));
-
     }
 
 
@@ -64,6 +62,5 @@ class CategoryController extends Controller
         $category->delete();
 
         return redirect()->route('admin.categories.index')->withStatus(__('Category is successfully deleted.'));
-
     }
 }

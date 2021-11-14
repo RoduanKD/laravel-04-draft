@@ -5,7 +5,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="{{ route('admin.tags.update',$tag) }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('admin.tags.update', $tag) }}" autocomplete="off"
+                        class="form-horizontal" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="card ">
@@ -30,13 +31,10 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Tag Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                            <input  class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                                    name="name"
-                                                    id="input-title-ar"
-                                                    type="text"
-                                                    placeholder="{{ __('Tag Name') }}"
-                                                    value="{{ $tag->name }}"
-                                                    required="true" aria-required="true" />
+                                            <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                                name="name" id="input-title-ar" type="text"
+                                                placeholder="{{ __('Tag Name') }}" value="{{ $tag->name }}"
+                                                required="true" aria-required="true" />
                                             @if ($errors->has('name'))
                                                 <span id="title-ar-error" class="error text-danger"
                                                     for="input-title-ar">{{ $errors->first('name') }}</span>

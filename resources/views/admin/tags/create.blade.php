@@ -1,11 +1,12 @@
-@extends('layouts.app', ['activePage' => 'tags', 'titlePage' => __('New Tag')])
+@extends('layouts.app', ['activePage' => 'tag-create', 'titlePage' => __('New Tag')])
 
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="{{ route('admin.tags.store') }}" autocomplete="off" class="form-horizontal" >
+                    <form method="post" action="{{ route('admin.tags.store') }}" autocomplete="off"
+                        class="form-horizontal">
                         @csrf
                         <div class="card ">
                             <div class="card-header card-header-primary">

@@ -32,14 +32,13 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $tag->name }}</td>
-                                                <td>{{$tag->created_at }}</td>
+                                                <td>{{ $tag->created_at }}</td>
                                                 <td class="td-actions text-right">
-                                                    <form action="{{ route('admin.tags.destroy',$tag) }}"
-                                                        method="post">
+                                                    <form action="{{ route('admin.tags.destroy', $tag) }}" method="post">
                                                         @csrf
                                                         @method('delete')
                                                         <a rel="tooltip" class="btn btn-success btn-link"
-                                                            href="{{ route('admin.tags.edit',$tag) }}"
+                                                            href="{{ route('admin.tags.edit', $tag) }}"
                                                             data-original-title="" title="">
                                                             <i class="material-icons">edit</i>
                                                             <div class="ripple-container"></div>

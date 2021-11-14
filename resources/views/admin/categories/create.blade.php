@@ -27,12 +27,12 @@
                                     </div>
                                 @endif
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Tag Name') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Cattegory Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                 name="name" id="input-title-ar" type="text"
-                                                placeholder="{{ __('Tag Name') }}" value="{{ old('name') }}"
+                                                placeholder="{{ __('Cattegory Name') }}" value="{{ old('name') }}"
                                                 required="true" aria-required="true" />
                                             @if ($errors->has('name'))
                                                 <span id="title-ar-error" class="error text-danger"

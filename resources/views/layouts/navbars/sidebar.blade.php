@@ -72,7 +72,7 @@
                     <p>{{ __('Notifications') }}</p>
                 </a>
             </li>
-            <li class="nav-item {{$activePage == 'posts' ? ' active' : '' }}">
+            <li class="nav-item {{ $activePage == 'posts' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#posts" aria-expanded="true">
                     <i><i class="material-icons">description</i></i>
                     <p>{{ __('Posts') }}
@@ -102,7 +102,7 @@
                     <p>{{ __('Posts') }}</p>
                 </a>
             </li> --}}
-            <li class="nav-item {{$activePage == 'tags' ? ' active' : '' }}">
+            <li class="nav-item {{ $activePage == 'tags' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#tags" aria-expanded="true">
                     <i><i class="material-icons">tags</i></i>
                     <p>{{ __('Tags') }}
@@ -117,7 +117,7 @@
                                 <p>{{ __('Tags') }}</p>
                             </a>
                         </li>
-                        <li class="nav-item{{ $activePage == 'post-create' ? ' active' : '' }}">
+                        <li class="nav-item{{ $activePage == 'tag-create' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.tags.create') }}">
                                 <i class="material-icons">add</i>
                                 <p>{{ __('Add New Tag') }}</p>
@@ -132,7 +132,7 @@
                     <p>{{ __('Tags') }}</p>
                 </a>
             </li> --}}
-            <li class="nav-item {{$activePage == 'categories' ? ' active' : '' }}">
+            <li class="nav-item {{ $activePage == 'categories' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#categories" aria-expanded="true">
                     <i><i class="material-icons">class</i></i>
                     <p>{{ __('Categories') }}
@@ -160,7 +160,7 @@
                 <a class="nav-link" href="{{ route('admin.messages.index') }}">
                     <i class="material-icons">description</i>
                     <p>{{ __('Message') }}</p>
-                 </a>
+                </a>
             </li>
             <li class="nav-item{{ $activePage == 'settings' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.settings.create') }}">

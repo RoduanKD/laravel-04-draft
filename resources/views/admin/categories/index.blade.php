@@ -32,14 +32,14 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $category->name }}</td>
-                                                <td>{{$category->created_at }}</td>
+                                                <td>{{ $category->created_at }}</td>
                                                 <td class="td-actions text-right">
-                                                    <form action="{{ route('admin.categories.destroy',$category) }}"
+                                                    <form action="{{ route('admin.categories.destroy', $category) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('delete')
                                                         <a rel="tooltip" class="btn btn-success btn-link"
-                                                            href="{{ route('admin.categories.edit',$category) }}"
+                                                            href="{{ route('admin.categories.edit', $category) }}"
                                                             data-original-title="" title="">
                                                             <i class="material-icons">edit</i>
                                                             <div class="ripple-container"></div>
