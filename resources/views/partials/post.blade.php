@@ -31,7 +31,7 @@
                         <a href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
                     @endforeach
                     <br>
-                    <time datetime="2016-1-1">{{ $post->created_at }}</time>
+                    <time datetime="2016-1-1">{{ $post->created_at->diffForHumans() }}</time>
                 </div>
             </div>
         </div>
