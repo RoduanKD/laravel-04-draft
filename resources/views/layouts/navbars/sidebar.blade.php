@@ -19,13 +19,13 @@
                 </a>
             </li>
             <li class="nav-item {{ $activePage == 'profile' || $activePage == 'user-management' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+                <a class="nav-link collapse" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
                     <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
                     <p>{{ __('Laravel Examples') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="laravelExample">
+                <div class="collapse" id="laravelExample">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.profile.edit') }}">
@@ -74,13 +74,13 @@
             </li>
 
             <li class="nav-item {{$activePage == 'users' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="true">
+                <a class="nav-link collapsed" data-toggle="collapse" href="#users" aria-expanded="false">
                     <i><i class="material-icons">persons</i></i>
                     <p>{{ __('Users') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="users">
+                <div class="collapse" id="users">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'users' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.users.index') }}">
@@ -99,13 +99,13 @@
             </li>
 
             <li class="nav-item {{$activePage == 'posts' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#posts" aria-expanded="true">
+                <a class="nav-link collapsed" data-toggle="collapse" href="#posts" aria-expanded="false">
                     <i><i class="material-icons">description</i></i>
                     <p>{{ __('Posts') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="posts">
+                <div class="collapse" id="posts">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'posts' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.posts.index') }}">
@@ -123,13 +123,13 @@
                 </div>
             </li>
             <li class="nav-item {{$activePage == 'tags' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#tags" aria-expanded="true">
+                <a class="nav-link collapse" data-toggle="collapse" href="#tags" aria-expanded="false">
                     <i><i class="material-icons">tags</i></i>
                     <p>{{ __('Tags') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="tags">
+                <div class="collapse" id="tags">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'tags' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.tags.index') }}">
@@ -147,13 +147,13 @@
                 </div>
             </li>
             <li class="nav-item {{$activePage == 'categories' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#categories" aria-expanded="true">
+                <a class="nav-link collapse" data-toggle="collapse" href="#categories" aria-expanded="false">
                     <i><i class="material-icons">class</i></i>
                     <p>{{ __('Categories') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="categories">
+                <div class="collapse" id="categories">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'categories' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.categories.index') }}">

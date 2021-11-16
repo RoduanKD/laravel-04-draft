@@ -2,12 +2,21 @@
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-switch.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
 @endpush
 
 @push('js')
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-switch.min.js') }}"></script>
+    <script src="{{ asset('js/select2.full.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
         $(document).ready(function() {
+            $("input[data-bootstrap-switch]").each(function() {
+                $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            });
+            $('.select2').select2();
             $('#summernote').summernote();
         });
     </script>
@@ -45,7 +54,8 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Arabic Title') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('title_ar') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('title_ar') ? ' is-invalid' : '' }}"
+                                            <input
+                                                class="form-control{{ $errors->has('title_ar') ? ' is-invalid' : '' }}"
                                                 name="title_ar" id="input-title-ar" type="text"
                                                 placeholder="{{ __('Arabic Title') }}" value="{{ old('title_ar') }}"
                                                 required="true" aria-required="true" />
@@ -77,7 +87,7 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('category_id') ? ' has-danger' : '' }}">
                                             <select
-                                                class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}"
+                                                class="form-control form-control-select{{ $errors->has('category_id') ? ' is-invalid' : '' }}"
                                                 name="category_id" id="input-title-ar" type="text"
                                                 placeholder="{{ __('Category') }}" value="{{ old('category_id') }}"
                                                 required="true" aria-required="true">
@@ -96,10 +106,10 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Tags') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('tags[]') ? ' has-danger' : '' }}">
-                                            <select class="form-control{{ $errors->has('tags[]') ? ' is-invalid' : '' }}"
-                                                name="tags[]" id="input-title-ar" type="text"
-                                                placeholder="{{ __('Tags') }}" value="{{ old('tags[]') }}"
-                                                required="true" aria-required="true" multiple>
+                                            <select class="select2" multiple="multiple"
+                                                data-placeholder="Select tags" style="width: 100%;" name="tags[]"
+                                                id="input-title-ar" placeholder="{{ __('Tags') }}"
+                                                value="{{ old('tags[]') }}" required="true" aria-required="true">
                                                 @foreach ($tags as $tag)
                                                     <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                                 @endforeach

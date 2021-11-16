@@ -49,7 +49,9 @@
                                                         href="{{ route('admin.posts.show', $post) }}">{{ $post->title_en }}</a>
                                                 </td>
                                                 <td>
-                                                    {{ $post->category->name }}
+                                                    @isset($post->category)
+                                                        {{ $post->category->name }}
+                                                    @endisset
                                                 </td>
                                                 <td>
                                                     @foreach ($post->tags as $tag)
