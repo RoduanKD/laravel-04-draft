@@ -14,7 +14,8 @@ class SettingController extends Controller
 
     public function index()
     {
-        return view('admin.settings.create');
+        $settings = Setting::all();
+        return view('admin.settings.edit', ['settings' => $settings]);
     }
 
 
@@ -24,16 +25,19 @@ class SettingController extends Controller
     }
 
 
-    public function store(SettingsRequest $request, Setting $setting)
+    public function store(SettingsRequest $request)
     {
-        $setting->title     = $request->title;
-        $setting->content   = $request->content;
-        $setting->save();
-
-        if ($request->image) {
-            $setting->addMediaFromRequest('image')->toMediaCollection('setting');
+        foreach ($request->validated() as $title => $content) {
+            $setting = Setting::firstWhere('title', $title);
+            if ($title === 'hero_image') {
+                $setting->clearMediaCollection('hero');
+                $setting->addMediaFromRequest('hero_image')->toMediaCollection('hero');
+                $setting->content = $setting->getFirstMediaUrl('hero');
+            } else {
+                $setting->content = $content;
+            }
+            $setting->save();
         }
-
         return back()->withStatus(__('New Hero Settings is successfully updated.'));
     }
 
