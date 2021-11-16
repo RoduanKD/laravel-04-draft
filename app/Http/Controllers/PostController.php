@@ -50,6 +50,7 @@ class PostController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Post::class);
         $categories = Category::all();
         $tags = Tag::all();
         return view('posts.create', ['categories' => $categories, 'tags' => $tags]);
@@ -82,6 +83,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
         $this->authorize('update-post', $post);
         return view('posts.edit', ['post' => $post]);
     }

@@ -18,7 +18,9 @@
                             href="{{ route('posts.edit', $post) }}">edit</a>@endcan
                         @csrf
                         @method('DELETE')
-                        <input class="button is-danger is-light is-outlined" type="submit" value="delete">
+                        @can('delete posts')
+                            <input class="button is-danger is-light is-outlined" type="submit" value="delete">
+                        @endcan
                     </form>
                 </div>
             </div>

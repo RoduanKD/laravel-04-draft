@@ -18,7 +18,7 @@ class PostPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('view any posts');
     }
 
     /**
@@ -41,7 +41,7 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('create posts');
     }
 
     /**
@@ -53,7 +53,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        //
+        return $user->can('update posts') && $user->id === $post->id;
     }
 
     /**

@@ -19,6 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Post::class);
         $posts = Post::paginate(10);
         return view('admin.posts.index', ['posts' => $posts]);
     }
@@ -30,6 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Post::class);
         $categories = Category::all();
         $tags = Tag::all();
         return view('admin.posts.create', ['categories' => $categories, 'tags' => $tags]);
@@ -43,6 +45,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Post::class);
         $validation = $request->validate([
             'title_en'     => 'required|min:3',
             'title_ar'     => 'required|min:3',
