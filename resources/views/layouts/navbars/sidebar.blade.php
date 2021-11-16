@@ -100,12 +100,6 @@
                     </ul>
                 </div>
             </li>
-<<<<<<< HEAD
-
-
-            <li class="nav-item{{ $activePage == 'posts' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.posts.index') }}">
-=======
             <li class="nav-item {{ $activePage == 'tags' || $activePage == 'tag-create' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#tags"
                     aria-expanded="{{ $activePage == 'tags' || $activePage == 'tag-create' ? 'true' : 'false' }}">
@@ -173,7 +167,6 @@
             </li>
             <li class="nav-item{{ $activePage == 'Messages' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.messages.index') }}">
->>>>>>> 854de09ac6ac3998c5cc7243cdfa9254b5c81853
                     <i class="material-icons">description</i>
                     <p>{{ __('Message') }}</p>
                 </a>
@@ -198,15 +191,6 @@
                     <p>{{ __('RTL Support') }}</p>
                 </a>
             </li>
-<<<<<<< HEAD
-            {{-- <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
-                <a class="nav-link text-white bg-danger" href="{{ route('upgrade') }}">
-                    <i class="material-icons text-white">unarchive</i>
-                    <p>{{ __('Upgrade to PRO') }}</p>
-                </a>
-            </li> --}}
-=======
->>>>>>> 854de09ac6ac3998c5cc7243cdfa9254b5c81853
         </ul>
     </div>
 </div>
