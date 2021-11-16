@@ -10335,3 +10335,15 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem;
 }
+.hero-body{
+    position: relative;
+    padding: 0;
+}
+.hero-image{
+    position: absolute;
+    height: 100%;
+    width:100%;
+    background-size: cover;
+    background-attachment: fixed;
+    object-fit: cover;
+}
