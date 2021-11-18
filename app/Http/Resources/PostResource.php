@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PostResource extends JsonResource
@@ -14,6 +15,9 @@ class PostResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'    => $this->id,
+            'title' => App::isLocale('ar') ? $this->title_ar : $this->title_en,
+        ];
     }
 }
