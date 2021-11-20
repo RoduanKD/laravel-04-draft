@@ -77,7 +77,6 @@
                                                             <i class="material-icons">delete</i>
                                                             <div class="ripple-container"></div>
                                                         </button>
-
                                                     </form>
                                                 </td>
                                             </tr>

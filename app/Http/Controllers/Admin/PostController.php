@@ -60,7 +60,7 @@ class PostController extends Controller
 
         $post->tags()->attach($request->tags);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with(['success' => 'post added successfully']);
     }
 
     /**
@@ -82,19 +82,35 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories             = Category::pluck('name','id');
+        $tags                   = Tag::pluck('name','id');
+        $selected_categories    = $post->categories->pluck('id')->toArray();
+        $selected_tags          = $post->tags->pluck('id')->toArray();
+        return view('admin.posts.edit',[
+            'post'                  =>$post,
+            'categories'            =>$categories,
+            'selected_categories'   => $selected_categories,
+            'tags'                  => $tags,
+            'selected_tags'         => $selected_tags
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        $post->categories()->sync($request->categories);
+        $post->tags()->sync($request->tags);
+        //! to update on image :
+        // if($request->hasFile('photo')){
+        //     $file = $request->file('photo');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = time().'.'.$extension;
+        //     $file->move('images/',$filename);
+        //     $post->photo = $filename;
+        // }
+        if($post)
+            return redirect()->route('admin.posts.index')->with('success' , 'Post Updated Successfully');
     }
 
     /**
