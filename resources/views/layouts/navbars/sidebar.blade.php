@@ -177,6 +177,14 @@
                     <p>{{ __('Settings') }}</p>
                 </a>
             </li>
+
+            <li class="nav-item{{ $activePage == 'Footer Management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.footers.index') }}">
+                    <i class="material-icons">description</i>
+                    <p>{{ __('Footer Management') }}</p>
+                </a>
+            </li>
+
             <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('language') }}">
                     <i class="material-icons">language</i>

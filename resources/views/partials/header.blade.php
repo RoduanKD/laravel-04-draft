@@ -62,9 +62,9 @@
                 @else
                     <div class="navbar-item">
                         <div class="buttons">
-                            {{-- <a href="{{ route('register') }}" class="button is-primary">
+                            <a href="{{ route('register') }}" class="button is-primary">
                                 <strong>{{ __('Sign up') }}</strong>
-                            </a> --}}
+                            </a>
                             <a href="{{ route('login') }}" class="button is-light">
                                 {{ __('Log in') }}
                             </a>
