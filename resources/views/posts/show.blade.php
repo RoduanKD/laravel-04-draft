@@ -14,10 +14,13 @@
                 </div>
                 <div class="level-right">
                     <form action="{{ route('posts.destroy', $post) }}" method="POST">
-                        <a class="button is-primary is-light is-outlined" href="{{ route('posts.edit', $post) }}">edit</a>
+                        @can('update-post', $post)<a class="button is-primary is-light is-outlined"
+                            href="{{ route('posts.edit', $post) }}">edit</a>@endcan
                         @csrf
                         @method('DELETE')
-                        <input class="button is-danger is-light is-outlined" type="submit" value="delete">
+                        @can('delete posts')
+                            <input class="button is-danger is-light is-outlined" type="submit" value="delete">
+                        @endcan
                     </form>
                 </div>
             </div>

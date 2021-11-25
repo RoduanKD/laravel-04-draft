@@ -19,13 +19,15 @@
                 </a>
             </li>
             <li class="nav-item {{ $activePage == 'profile' || $activePage == 'user-management' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#laravelExample"
+                    aria-expanded="{{ $activePage == 'profile' || $activePage == 'user-management' ? 'true' : 'false' }}">
                     <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
                     <p>{{ __('Laravel Examples') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="laravelExample">
+                <div class="collapse {{ $activePage == 'profile' || $activePage == 'user-management' ? 'show' : '' }}"
+                    id="laravelExample">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.profile.edit') }}">
@@ -42,7 +44,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
+            {{-- <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('table') }}">
                     <i class="material-icons">content_paste</i>
                     <p>{{ __('Table List') }}</p>
@@ -71,11 +73,108 @@
                     <i class="material-icons">notifications</i>
                     <p>{{ __('Notifications') }}</p>
                 </a>
+            </li> --}}
+            <li class="nav-item {{ $activePage == 'posts' || $activePage == 'post-create' ? ' active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#posts"
+                    aria-expanded="{{ $activePage == 'posts' || $activePage == 'post-create' ? 'true' : 'false' }}">
+                    <i><i class="material-icons">description</i></i>
+                    <p>{{ __('Posts') }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse {{ $activePage == 'posts' || $activePage == 'post-create' ? 'show' : '' }}"
+                    id="posts">
+                    <ul class="nav">
+                        <li class="nav-item{{ $activePage == 'posts' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.posts.index') }}">
+                                <i class="material-icons">description</i>
+                                <p>{{ __('Posts') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item{{ $activePage == 'post-create' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.posts.create') }}">
+                                <i class="material-icons">add</i>
+                                <p>{{ __('Add New Post') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li class="nav-item{{ $activePage == 'posts' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.posts.index') }}">
+            <li class="nav-item {{ $activePage == 'tags' || $activePage == 'tag-create' ? ' active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#tags"
+                    aria-expanded="{{ $activePage == 'tags' || $activePage == 'tag-create' ? 'true' : 'false' }}">
+                    <i><i class="material-icons">tags</i></i>
+                    <p>{{ __('Tags') }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse {{ $activePage == 'tags' || $activePage == 'tag-create' ? 'show' : '' }}"
+                    id="tags">
+                    <ul class="nav">
+                        <li class="nav-item{{ $activePage == 'tags' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.tags.index') }}">
+                                <i class="material-icons">tags</i>
+                                <p>{{ __('Tags') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item{{ $activePage == 'tag-create' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.tags.create') }}">
+                                <i class="material-icons">add</i>
+                                <p>{{ __('Add New Tag') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {{-- <li class="nav-item{{ $activePage == 'tags' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.tags.index') }}">
+                    <i class="material-icons">tags</i>
+                    <p>{{ __('Tags') }}</p>
+                </a>
+            </li> --}}
+            <li
+                class="nav-item {{ $activePage == 'categories' || $activePage == 'category-create' ? ' active' : '' }}">
+                <a class="nav-link" data-toggle="collapse" href="#categories" aria-expan$activePage=='categories'
+                    || $activePage=='category-create' ? 'true' : 'false' }}">
+                    <i><i class="material-icons">class</i></i>
+                    <p>{{ __('Categories') }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse {{ $activePage == 'categories' || $activePage == 'category-create' ? 'show' : '' }}"
+                    id="categories">
+                    <ul class="nav">
+                        <li class="nav-item{{ $activePage == 'categories' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.categories.index') }}">
+                                <i class="material-icons">class</i>
+                                <p>{{ __('Categories') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item{{ $activePage == 'category-create' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.categories.create') }}">
+                                <i class="material-icons">add</i>
+                                <p>{{ __('Add New Category') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item{{ $activePage == 'projects' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.projects.index') }}">
+                    <i class="material-icons">work</i>
+                    <p>{{ __('projects') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'Messages' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.messages.index') }}">
                     <i class="material-icons">description</i>
-                    <p>{{ __('Posts') }}</p>
+                    <p>{{ __('Message') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'settings' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.settings.index') }}">
+                    <i class="material-icons">settings</i>
+                    <p>{{ __('Settings') }}</p>
                 </a>
             </li>
             <li class="nav-item{{ $activePage == 'subscriptions' ? ' active' : '' }}">
@@ -94,12 +193,6 @@
                 <a class="nav-link" href="{{ route('language') }}">
                     <i class="material-icons">language</i>
                     <p>{{ __('RTL Support') }}</p>
-                </a>
-            </li>
-            <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
-                <a class="nav-link text-white bg-danger" href="{{ route('upgrade') }}">
-                    <i class="material-icons text-white">unarchive</i>
-                    <p>{{ __('Upgrade to PRO') }}</p>
                 </a>
             </li>
         </ul>

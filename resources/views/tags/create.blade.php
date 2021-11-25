@@ -5,7 +5,7 @@
 @section('content')
     <section class="section" style="    height: 69vh;">
         <div class="container">
-            <form action="{{ route('tags.store') }}" method="POST">
+            <form action="{{ route('admin.tags.store') }}" method="POST">
                 @csrf
                 <div class="columns is-centered">
                     <div class="column is-6">

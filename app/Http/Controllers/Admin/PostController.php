@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 
 class PostController extends Controller
@@ -18,6 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Post::class);
         $posts = Post::paginate(10);
         return view('admin.posts.index', ['posts' => $posts]);
     }
@@ -29,6 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Post::class);
         $categories = Category::all();
         $tags = Tag::all();
         return view('admin.posts.create', ['categories' => $categories, 'tags' => $tags]);
@@ -42,6 +45,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Post::class);
         $validation = $request->validate([
             'title_en'     => 'required|min:3',
             'title_ar'     => 'required|min:3',
@@ -52,8 +56,8 @@ class PostController extends Controller
             'tags'          => 'required|array|min:1|max:5',
             'tags.*'        => 'required|numeric|exists:tags,id',
         ]);
-        // $request->dd();
         $validation['featured_image'] = $request->featured_image->store('public/images');
+        $validation['user_id'] = Auth::user()->id;
         $validation['content_en'] = Purify::clean($request->content_en);
         $post = Post::create($validation);
 

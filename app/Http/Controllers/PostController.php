@@ -50,6 +50,7 @@ class PostController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Post::class);
         $categories = Category::all();
         $tags = Tag::all();
         return view('posts.create', ['categories' => $categories, 'tags' => $tags]);
@@ -72,7 +73,6 @@ class PostController extends Controller
             'tags'          => 'required|array|min:1|max:5',
             'tags.*'        => 'required|numeric|exists:tags,id',
         ]);
-        // $request->dd();
         $validation['featured_image'] = $request->featured_image->store('public/images');
         $post = Post::create($validation);
 
@@ -83,9 +83,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $categories = Category::all();
-        $tags = Tag::all();
-        return view('posts.edit', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
+        $this->authorize('update', $post);
+        $this->authorize('update-post', $post);
+        return view('posts.edit', ['post' => $post]);
     }
 
     public function update(Request $request, Post $post)
@@ -104,6 +104,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         $post->delete();
 
         return redirect()->route('posts.index');

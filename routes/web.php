@@ -1,18 +1,23 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
-use App\Http\Controllers\Admin\SubscriberController as AdminSubscriberController;
-use App\Http\Controllers\Admin\NewsletterController as AdminNewsletterController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\Admin\MessageController as AdminMessageController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TagController as AdminTagController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\Project;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,21 +37,25 @@ Route::get('/', function () {
     $picture = '/images/profile.png';
 
     $posts = Post::latest()->paginate(6);
+    $projects = Project::latest()->paginate(6);
     // $posts = Post::all();
-
-    // dd($posts);
-
-    return view('welcome', ['skills' => $skills, 'image' => $picture, 'posts' => $posts]);
+    return view('welcome', [
+        'skills'    => $skills,
+        'image'     => $picture,
+        'posts'     => $posts,
+        'projects'  => $projects
+    ]);
 })->name('welcome');
 
-
+Route::view('/about', 'pages.about');
 Route::get('/contact', [MessageController::class, 'create'])->name('contact');
 Route::resource('messages', MessageController::class)->only('store');
 Route::resource('posts', PostController::class);
 Route::resource('posts.comments', PostCommentController::class)->shallow()->except(['index', 'create', 'show']);
 Route::resource('categories', CategoryController::class);
 Route::resource('tags', TagController::class);
-Route::resource('subscribers', SubscriberController::class);
+Route::resource('projects', ProjectController::class)->only(['index', 'show']);
+
 
 Route::get('lang/{locale}', function ($locale) {
     // config(['app.locale' => $locale]);
@@ -60,33 +69,13 @@ Auth::routes(['register' => false, 'verify' => true]);
 
 // to be removed
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('table-list', function () {
-        return view('pages.table_list');
-    })->name('table');
-
-    Route::get('typography', function () {
-        return view('pages.typography');
-    })->name('typography');
-
-    Route::get('icons', function () {
-        return view('pages.icons');
-    })->name('icons');
-
-    Route::get('map', function () {
-        return view('pages.map');
-    })->name('map');
-
-    Route::get('notifications', function () {
-        return view('pages.notifications');
-    })->name('notifications');
-
-    Route::get('rtl-support', function () {
-        return view('pages.language');
-    })->name('language');
-
-    Route::get('upgrade', function () {
-        return view('pages.upgrade');
-    })->name('upgrade');
+    Route::view('table-list', 'pages.table_list')->name('table');
+    Route::view('typography', 'pages.typography')->name('typography');
+    Route::view('icons', 'pages.icons')->name('icons');
+    Route::view('map', 'pages.map')->name('map');
+    Route::view('notifications', 'pages.notifications')->name('notifications');
+    Route::view('rtl-support', 'pages.language')->name('language');
+    Route::view('upgrade', 'pages.upgrade')->name('upgrade');
 });
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -96,6 +85,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::resource('posts', AdminPostController::class);
+<<<<<<< HEAD
     Route::resource('subscribers', AdminSubscriberController::class);
     Route::resource('newsletters', AdminNewsletterController::class);
+=======
+    Route::resource('categories', AdminCategoryController::class);
+    Route::resource('tags', AdminTagController::class);
+    Route::resource('projects', AdminProjectController::class);
+    Route::resource('messages', AdminMessageController::class);
+    Route::resource('settings', SettingController::class);
+>>>>>>> 712943718008d226f343f14d8e56969bc3dad945
 });
