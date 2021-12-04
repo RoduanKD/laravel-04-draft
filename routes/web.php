@@ -12,6 +12,7 @@ use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Models\Post;
@@ -84,9 +85,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::resource('posts', AdminPostController::class);
+<<<<<<< HEAD
+    Route::resource('subscribers', AdminSubscriberController::class);
+    Route::resource('newsletters', AdminNewsletterController::class);
+=======
     Route::resource('categories', AdminCategoryController::class);
     Route::resource('tags', AdminTagController::class);
     Route::resource('projects', AdminProjectController::class);
     Route::resource('messages', AdminMessageController::class);
     Route::resource('settings', SettingController::class);
+>>>>>>> 712943718008d226f343f14d8e56969bc3dad945
 });
